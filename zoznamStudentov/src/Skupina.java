@@ -34,5 +34,15 @@ class Skupina {
             System.out.println(student.toString());
         }
     }
+
+    Student getStudent(String osobneCislo) {
+        for (Student student : this.zoznamStudentov) {
+            if (student.getOsobneCislo().equals(osobneCislo)) {
+                return student;
+            }
+        }
+        
+        return null;
+    }
     
 }
