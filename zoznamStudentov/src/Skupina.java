@@ -25,8 +25,12 @@ class Skupina {
         return this.cisloSkupiny;
     }
 
-    void pridajStudenta(Student student) {
+    boolean pridajStudenta(Student student) {
+        if (this.getStudent(student.getOsobneCislo()) != null) {
+            return false;
+        }
         this.zoznamStudentov.add(student);
+        return true;
     }
 
     void vypisStudentov() {

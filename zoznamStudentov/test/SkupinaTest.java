@@ -30,4 +30,10 @@ public class SkupinaTest {
         //toto je zle: Assert.assertEquals(this.fero.getOsobneCislo(), najdeny.getOsobneCislo());
         Assert.assertSame(this.fero, najdeny);
     }
+    
+    @Test
+    public void pridanieStudentaDvaKrat() {
+        Assert.assertTrue(this.skupina.pridajStudenta(this.fero));
+        Assert.assertFalse(this.skupina.pridajStudenta(this.fero));
+    }
 }
