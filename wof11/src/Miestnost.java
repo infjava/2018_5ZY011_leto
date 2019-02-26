@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
  * Kazda "miestnost" je z inymi miestnostami spojena vychodmi. 
@@ -12,10 +15,7 @@
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private Miestnost severnyVychod;
-    private Miestnost juznyVychod;
-    private Miestnost vychodnyVychod;
-    private Miestnost zapadnyVychod;
+    private ArrayList<Vychod> vychody;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -26,6 +26,7 @@ public class Miestnost {
      */
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
+        this.vychody = new ArrayList<Vychod>();
     }
 
     /**
@@ -39,16 +40,16 @@ public class Miestnost {
      */
     public void nastavVychody(Miestnost sever, Miestnost vychod, Miestnost juh, Miestnost zapad) {
         if (sever != null) {
-            this.severnyVychod = sever;
+            this.vychody.add(new Vychod("sever", sever));
         }
         if (vychod != null) {
-            this.vychodnyVychod = vychod;
+            this.vychody.add(new Vychod("vychod", vychod));
         }
         if (juh != null) {
-            this.juznyVychod = juh;
+            this.vychody.add(new Vychod("juh", juh));
         }
         if (zapad != null) {
-            this.zapadnyVychod = zapad;
+            this.vychody.add(new Vychod("zapad", zapad));
         }
     }
 
@@ -62,33 +63,19 @@ public class Miestnost {
     void infoOMiestnosti() {
         System.out.println("Teraz si v miestnosti " + this.getPopis());
         System.out.print("Vychody: ");
-        if (this.severnyVychod != null) {
-            System.out.print("sever ");
-        }
-        if (this.vychodnyVychod != null) {
-            System.out.print("vychod ");
-        }
-        if (this.juznyVychod != null) {
-            System.out.print("juh ");
-        }
-        if (this.zapadnyVychod != null) {
-            System.out.print("zapad ");
+        for (Vychod vychod : this.vychody) {
+            System.out.print(vychod.getSmer() + " ");
         }
         System.out.println();
     }
     
     public Miestnost getVychod(String smer) {
-        switch (smer) {
-            case "sever":
-                return this.severnyVychod;
-            case "vychod":
-                return this.vychodnyVychod;
-            case "juh":
-                return this.juznyVychod;
-            case "zapad":
-                return this.zapadnyVychod;
-            default:
-                return null;
+        for (Vychod vychod : this.vychody) {
+            if (vychod.getSmer().equals(smer)) {
+                return vychod.getMiestnost();
+            }
         }
+        
+        return null;
     }
 }
