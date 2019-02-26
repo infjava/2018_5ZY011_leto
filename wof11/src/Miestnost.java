@@ -33,24 +33,11 @@ public class Miestnost {
      * Nastavi vychody z miestnosti. Kazdy vychod je urceny bud odkazom 
      * na miestnost alebo hodnotou null, ak vychod tym smerom neexistuje.
      * 
-     * @param sever miestnost smerom na sever.
-     * @param vychod miestnost smerom na vychod.
-     * @param juh miestnost smerom na juh.
-     * @param zapad miestnost smerom na zapad.
+     * @param smer smer vychodu.
+     * @param miestnost cielova miestnost vychodu.
      */
-    public void nastavVychody(Miestnost sever, Miestnost vychod, Miestnost juh, Miestnost zapad) {
-        if (sever != null) {
-            this.vychody.put("sever", sever);
-        }
-        if (vychod != null) {
-            this.vychody.put("vychod", vychod);
-        }
-        if (juh != null) {
-            this.vychody.put("juh", juh);
-        }
-        if (zapad != null) {
-            this.vychody.put("zapad", zapad);
-        }
+    public void nastavVychod(String smer, Miestnost miestnost) {
+        this.vychody.put(smer, miestnost);
     }
 
     /**
