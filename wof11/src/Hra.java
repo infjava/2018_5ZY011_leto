@@ -35,27 +35,48 @@ public class Hra  {
      */
     private void vytvorMiestnosti() {
         // vytvorenie miestnosti
-        Miestnost terasa = new Miestnost("terasa - hlavny vstup na fakultu");
-        Miestnost aula = new Miestnost("aula");
-        Miestnost bufet = new Miestnost("bufet");
-        Miestnost labak = new Miestnost("pocitacove laboratorium");
-        Miestnost kancelaria = new Miestnost("kancelaria spravcu pocitacoveho laboratoria");
+        Miestnost mhd = new Miestnost("mhd - Stale stoji. Ujo sofer niekam odbehol");
+        Miestnost domov = new Miestnost("domov - Vsade dobre, na FRI najlepsie");
+        Miestnost parkovisko = new Miestnost("parkovisko - Pokojne tu stoja auta. Treba byt ticho a nevyplasit ich");
+        Miestnost jedalen = new Miestnost("jedalen - Mnam mnam, tu to vonia");
+        Miestnost vratnica = new Miestnost("vratnica - Tu sedi pani vratnicka");
+        Miestnost ra = new Miestnost("chodba ra - Dlha chodba");
+        Miestnost rb = new Miestnost("chodba rb - Tmava chodba");
+        Miestnost ra6 = new Miestnost("ra006 - Labacik plny laboratornych (teda ehm vlastne pocitacovych) mysi");
+        Miestnost wc = new Miestnost("wc - Smradocek, ale teplucko");
+        Miestnost ic = new Miestnost("ic - Informacne centrum, prave prebiehaju volby");
         
-        // inicializacia miestnosti = nastavenie vychodov
-        terasa.nastavVychod("vychod", aula);
-        terasa.nastavVychod("juh", labak);
-        terasa.nastavVychod("zapad", bufet);
+        mhd.nastavVychod("juh", parkovisko);
         
-        aula.nastavVychod("zapad", terasa);
+        domov.nastavVychod("vychod", parkovisko);
         
-        bufet.nastavVychod("vychod", terasa);
+        parkovisko.nastavVychod("sever", mhd);
+        parkovisko.nastavVychod("zapad", domov);
+        parkovisko.nastavVychod("vychod1", jedalen);
+        parkovisko.nastavVychod("vychod2", vratnica);
         
-        labak.nastavVychod("sever", terasa);
-        labak.nastavVychod("vychod", kancelaria);
+        jedalen.nastavVychod("zapad", parkovisko);
+        jedalen.nastavVychod("hore", ra);
         
-        kancelaria.nastavVychod("zapad", labak);
+        vratnica.nastavVychod("zapad", parkovisko);
+        vratnica.nastavVychod("sever", ra);
+        vratnica.nastavVychod("juh", rb);
+        vratnica.nastavVychod("vychod", ic);
+        
+        ra.nastavVychod("dole", jedalen);
+        ra.nastavVychod("zapad", ra6);
+        ra.nastavVychod("vychod", wc);
+        ra.nastavVychod("juh", vratnica);
+        
+        rb.nastavVychod("sever", vratnica);
+        
+        ra6.nastavVychod("vychod", ra);
+        
+        wc.nastavVychod("zapad", ra);
+        
+        ic.nastavVychod("zapad", vratnica);
 
-        this.aktualnaMiestnost = terasa;  // startovacia miestnost hry
+        this.aktualnaMiestnost = parkovisko;  // startovacia miestnost hry
     }
 
     /**
