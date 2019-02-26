@@ -1,5 +1,5 @@
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private ArrayList<Vychod> vychody;
+    private HashMap<String, Miestnost> vychody;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -26,7 +26,7 @@ public class Miestnost {
      */
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
-        this.vychody = new ArrayList<Vychod>();
+        this.vychody = new HashMap<String, Miestnost>();
     }
 
     /**
@@ -40,16 +40,16 @@ public class Miestnost {
      */
     public void nastavVychody(Miestnost sever, Miestnost vychod, Miestnost juh, Miestnost zapad) {
         if (sever != null) {
-            this.vychody.add(new Vychod("sever", sever));
+            this.vychody.put("sever", sever);
         }
         if (vychod != null) {
-            this.vychody.add(new Vychod("vychod", vychod));
+            this.vychody.put("vychod", vychod);
         }
         if (juh != null) {
-            this.vychody.add(new Vychod("juh", juh));
+            this.vychody.put("juh", juh);
         }
         if (zapad != null) {
-            this.vychody.add(new Vychod("zapad", zapad));
+            this.vychody.put("zapad", zapad);
         }
     }
 
@@ -63,19 +63,13 @@ public class Miestnost {
     void infoOMiestnosti() {
         System.out.println("Teraz si v miestnosti " + this.getPopis());
         System.out.print("Vychody: ");
-        for (Vychod vychod : this.vychody) {
-            System.out.print(vychod.getSmer() + " ");
+        for (String smer : this.vychody.keySet()) {
+            System.out.print(smer + " ");
         }
         System.out.println();
     }
     
     public Miestnost getVychod(String smer) {
-        for (Vychod vychod : this.vychody) {
-            if (vychod.getSmer().equals(smer)) {
-                return vychod.getMiestnost();
-            }
-        }
-        
-        return null;
+        return this.vychody.get(smer);
     }
 }
