@@ -1,3 +1,5 @@
+package sk.uniza.fri.wof.prikazy;
+
 import java.util.Scanner;
 
 /**

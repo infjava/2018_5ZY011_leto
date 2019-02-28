@@ -1,3 +1,10 @@
+package sk.uniza.fri.wof.hra;
+
+import sk.uniza.fri.wof.svet.Mapa;
+import sk.uniza.fri.wof.prikazy.Prikaz;
+import sk.uniza.fri.wof.prikazy.Prikazy;
+import sk.uniza.fri.wof.prikazy.Parser;
+
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
  * "World of FRI" je velmi jednoducha textova hra - adventura. 

@@ -1,3 +1,7 @@
+package sk.uniza.fri.wof.hra;
+
+import sk.uniza.fri.wof.svet.Miestnost;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +24,7 @@ public class Hrac {
         return this.aktualnaMiestnost;
     }
 
-    void chodSmerom(String smer) {
+    public void chodSmerom(String smer) {
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
         Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
 
