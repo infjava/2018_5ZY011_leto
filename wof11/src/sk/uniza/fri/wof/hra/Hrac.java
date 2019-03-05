@@ -1,6 +1,8 @@
 package sk.uniza.fri.wof.hra;
 
+import java.util.ArrayList;
 import sk.uniza.fri.wof.svet.Miestnost;
+import sk.uniza.fri.wof.svet.Predmet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,9 +17,11 @@ import sk.uniza.fri.wof.svet.Miestnost;
 public class Hrac {
 
     private Miestnost aktualnaMiestnost;
+    private final ArrayList<Predmet> inventar;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
+        this.inventar = new ArrayList<Predmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -34,5 +38,10 @@ public class Hrac {
             this.aktualnaMiestnost = novaMiestnost;
             novaMiestnost.infoOMiestnosti();
         }
+    }
+
+    public void zdvihniPredmet(String nazovPredmetu) {
+        Predmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
+        this.inventar.add(zdvihuty);
     }
 }
