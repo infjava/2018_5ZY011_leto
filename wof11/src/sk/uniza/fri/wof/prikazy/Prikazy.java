@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.prikazy;
 
 import sk.uniza.fri.wof.hra.Hrac;
+import sk.uniza.fri.wof.svet.Miestnost;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -15,7 +16,7 @@ import sk.uniza.fri.wof.hra.Hrac;
 public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
-        "chod", "ukonci", "pomoc"
+        "chod", "ukonci", "pomoc", "preskumaj"
     };
 
     /**
@@ -59,6 +60,9 @@ public class Prikazy {
                 return false;
             case "ukonci":
                 return this.ukonciHru(prikaz);
+            case "preskumaj":
+                this.preskumajMiestnost(hrac);
+                return false;
             default:
                 return false;
         }
@@ -109,5 +113,11 @@ public class Prikazy {
         } else {
             return true;
         }
+    }
+
+    private void preskumajMiestnost(Hrac hrac) {
+        Miestnost aktualna = hrac.getAktualnaMiestnost();
+        System.out.println("Nasiel si tieto predmety:");
+        aktualna.vypisZoznamPredmetov();
     }
 }

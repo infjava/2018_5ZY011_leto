@@ -68,4 +68,10 @@ public class Miestnost {
     void pridajPredmet(Predmet predmet) {
         this.predmety.add(predmet);
     }
+
+    public void vypisZoznamPredmetov() {
+        for (Predmet predmet : this.predmety) {
+            System.out.println("- " + predmet.getNazov());
+        }
+    }
 }
