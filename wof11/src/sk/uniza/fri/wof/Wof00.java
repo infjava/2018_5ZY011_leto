@@ -25,6 +25,10 @@ public class Wof00 {
         - Navleky
         - Handra
         - Cistiace prostriedky
+        - Prikazy:
+            - zdvihni <nazov_predmetu>
+            - poloz <nazov_predmetu>
+            - prehladaj
     - Levely/Charakteristiky
         - Exp
         - Zivoty - HP
