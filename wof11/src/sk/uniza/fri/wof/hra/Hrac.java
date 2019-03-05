@@ -44,4 +44,15 @@ public class Hrac {
         Predmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
         this.inventar.add(zdvihuty);
     }
+
+    public void zobrazProfil() {
+        if (this.inventar.isEmpty()) {
+            System.out.println("Inventar je prazdny");
+        } else {
+            System.out.println("Inventar:");
+            for (Predmet predmet : this.inventar) {
+                System.out.println("- " + predmet.getNazov());
+            }
+        }
+    }
 }

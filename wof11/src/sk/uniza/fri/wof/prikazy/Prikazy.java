@@ -16,7 +16,8 @@ import sk.uniza.fri.wof.svet.Miestnost;
 public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
-        "chod", "ukonci", "pomoc", "preskumaj", "zdvihni"
+        "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
+        "profil"
     };
 
     /**
@@ -65,6 +66,9 @@ public class Prikazy {
                 return false;
             case "zdvihni":
                 this.zdvihniPredmet(hrac, prikaz);
+                return false;
+            case "profil":
+                this.zobrazProfilHraca(hrac);
                 return false;
             default:
                 return false;
@@ -129,5 +133,9 @@ public class Prikazy {
 
     private void zdvihniPredmet(Hrac hrac, Prikaz prikaz) {
         hrac.zdvihniPredmet(prikaz.getParameter());
+    }
+
+    private void zobrazProfilHraca(Hrac hrac) {
+        hrac.zobrazProfil();
     }
 }
