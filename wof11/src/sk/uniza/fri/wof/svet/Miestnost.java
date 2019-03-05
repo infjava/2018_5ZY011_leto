@@ -1,7 +1,7 @@
 package sk.uniza.fri.wof.svet;
 
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
@@ -19,7 +19,7 @@ import java.util.TreeMap;
 public class Miestnost {
     private final String popisMiestnosti;
     private final TreeMap<String, Miestnost> vychody;
-    private final ArrayList<Predmet> predmety;
+    private final HashMap<String, Predmet> predmety;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -31,7 +31,7 @@ public class Miestnost {
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
-        this.predmety = new ArrayList<Predmet>();
+        this.predmety = new HashMap<String, Predmet>();
     }
 
     /**
@@ -66,7 +66,7 @@ public class Miestnost {
     }
 
     void pridajPredmet(Predmet predmet) {
-        this.predmety.add(predmet);
+        this.predmety.put(predmet.getNazov(), predmet);
     }
 
     public void vypisZoznamPredmetov() {
@@ -76,19 +76,12 @@ public class Miestnost {
         }
         
         System.out.println("Nasiel si tieto predmety:");
-        for (Predmet predmet : this.predmety) {
+        for (Predmet predmet : this.predmety.values()) {
             System.out.println("- " + predmet.getNazov());
         }
     }
 
     public Predmet odstranPredmet(String nazovPredmetu) {
-        for (Predmet predmet : this.predmety) {
-            if (predmet.getNazov().equals(nazovPredmetu)) {
-                this.predmety.remove(predmet);
-                return predmet;
-            }
-        }
-        
-        return null;
+        return this.predmety.remove(nazovPredmetu);
     }
 }
