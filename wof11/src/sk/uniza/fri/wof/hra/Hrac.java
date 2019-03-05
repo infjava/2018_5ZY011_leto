@@ -42,6 +42,12 @@ public class Hrac {
 
     public void zdvihniPredmet(String nazovPredmetu) {
         Predmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
+        
+        if (zdvihuty == null) {
+            System.out.println("Nenasiel si predmet " + nazovPredmetu);
+            return;
+        }
+        
         this.inventar.add(zdvihuty);
     }
 
