@@ -78,7 +78,11 @@ public class Prikazy {
         System.out.println("Zabludil si. Si sam. Tulas sa po fakulte.");
         System.out.println();
         System.out.println("Mozes pouzit tieto prikazy:");
-        System.out.println("   chod ukonci pomoc");
+        System.out.print("  ");
+        for (String prikaz : Prikazy.PLATNE_PRIKAZY) {
+            System.out.print(" " + prikaz);
+        }
+        System.out.println();
     }
 
     /** 
