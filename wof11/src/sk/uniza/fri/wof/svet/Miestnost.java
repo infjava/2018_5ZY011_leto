@@ -70,6 +70,12 @@ public class Miestnost {
     }
 
     public void vypisZoznamPredmetov() {
+        if (this.predmety.isEmpty()) {
+            System.out.println("Nic si nenasiel.");
+            return;
+        }
+        
+        System.out.println("Nasiel si tieto predmety:");
         for (Predmet predmet : this.predmety) {
             System.out.println("- " + predmet.getNazov());
         }

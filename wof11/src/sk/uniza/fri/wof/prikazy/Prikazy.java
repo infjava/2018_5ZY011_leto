@@ -117,7 +117,6 @@ public class Prikazy {
 
     private void preskumajMiestnost(Hrac hrac) {
         Miestnost aktualna = hrac.getAktualnaMiestnost();
-        System.out.println("Nasiel si tieto predmety:");
         aktualna.vypisZoznamPredmetov();
     }
 }
