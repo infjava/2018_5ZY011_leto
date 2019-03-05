@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.svet;
 
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
@@ -16,8 +17,9 @@ import java.util.TreeMap;
  * @version 2012.02.21
  */
 public class Miestnost {
-    private String popisMiestnosti;
-    private TreeMap<String, Miestnost> vychody;
+    private final String popisMiestnosti;
+    private final TreeMap<String, Miestnost> vychody;
+    private final ArrayList<Predmet> predmety;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -29,6 +31,7 @@ public class Miestnost {
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
+        this.predmety = new ArrayList<Predmet>();
     }
 
     /**
@@ -60,5 +63,9 @@ public class Miestnost {
     
     public Miestnost getVychod(String smer) {
         return this.vychody.get(smer);
+    }
+
+    void pridajPredmet(Predmet predmet) {
+        this.predmety.add(predmet);
     }
 }

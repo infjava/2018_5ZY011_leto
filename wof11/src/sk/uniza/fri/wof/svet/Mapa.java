@@ -27,6 +27,8 @@ public class Mapa {
         Miestnost wc = new Miestnost("wc - Smradocek, ale teplucko");
         Miestnost ic = new Miestnost("ic - Informacne centrum, prave prebiehaju volby");
         
+        parkovisko.pridajPredmet(new Predmet("kluc"));
+        
         mhd.nastavVychod("juh", parkovisko);
         
         domov.nastavVychod("vychod", parkovisko);
