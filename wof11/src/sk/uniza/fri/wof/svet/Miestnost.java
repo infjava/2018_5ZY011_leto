@@ -80,4 +80,15 @@ public class Miestnost {
             System.out.println("- " + predmet.getNazov());
         }
     }
+
+    public Predmet odstranPredmet(String nazovPredmetu) {
+        for (Predmet predmet : this.predmety) {
+            if (predmet.getNazov().equals(nazovPredmetu)) {
+                this.predmety.remove(predmet);
+                return predmet;
+            }
+        }
+        
+        return null;
+    }
 }
