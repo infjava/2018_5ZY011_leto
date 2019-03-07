@@ -11,6 +11,12 @@ package sk.uniza.fri.wof.svet;
  */
 public class Navleky implements IPredmet {
 
+    private boolean suObute;
+
+    public Navleky() {
+        this.suObute = false;
+    }
+    
     @Override
     public String getNazov() {
         return "navleky";
@@ -18,7 +24,13 @@ public class Navleky implements IPredmet {
 
     @Override
     public void pouziSa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.suObute) {
+            System.out.println("Vyzul si si navleky");
+            this.suObute = false;
+        } else {
+            System.out.println("Obul si si navleky");
+            this.suObute = true;
+        }
     }
     
 }
