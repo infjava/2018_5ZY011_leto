@@ -1,6 +1,6 @@
 package sk.uniza.fri.wof.hra;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.Predmet;
 
@@ -17,11 +17,11 @@ import sk.uniza.fri.wof.svet.Predmet;
 public class Hrac {
 
     private Miestnost aktualnaMiestnost;
-    private final ArrayList<Predmet> inventar;
+    private final HashMap<String, Predmet> inventar;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
-        this.inventar = new ArrayList<Predmet>();
+        this.inventar = new HashMap<String, Predmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -48,7 +48,7 @@ public class Hrac {
             return;
         }
         
-        this.inventar.add(zdvihuty);
+        this.inventar.put(zdvihuty.getNazov(), zdvihuty);
     }
 
     public void zobrazProfil() {
@@ -56,9 +56,20 @@ public class Hrac {
             System.out.println("Inventar je prazdny");
         } else {
             System.out.println("Inventar:");
-            for (Predmet predmet : this.inventar) {
+            for (Predmet predmet : this.inventar.values()) {
                 System.out.println("- " + predmet.getNazov());
             }
         }
+    }
+
+    public void polozPredmet(String nazovPredmetu) {
+        Predmet pokladany = this.inventar.remove(nazovPredmetu);
+        
+        if (pokladany == null) {
+            System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
+            return;
+        }
+        
+        this.aktualnaMiestnost.pridajPredmet(pokladany);
     }
 }
