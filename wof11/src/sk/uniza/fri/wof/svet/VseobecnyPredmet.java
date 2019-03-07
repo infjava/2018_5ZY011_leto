@@ -19,4 +19,10 @@ public class VseobecnyPredmet implements IPredmet {
     public String getNazov() {
         return this.nazov;
     }
+
+    @Override
+    public void pouziSa() {
+        System.out.println("Pouzivas, pouzivam, pouzivame....");
+        System.out.println("Ale nist to nerobi.");
+    }
 }

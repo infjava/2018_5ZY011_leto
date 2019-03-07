@@ -15,5 +15,10 @@ public class Navleky implements IPredmet {
     public String getNazov() {
         return "navleky";
     }
+
+    @Override
+    public void pouziSa() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

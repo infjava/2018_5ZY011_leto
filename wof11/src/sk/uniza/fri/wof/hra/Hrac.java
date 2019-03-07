@@ -81,6 +81,6 @@ public class Hrac {
             return;
         }
         
-        ///////////
+        pouzivany.pouziSa();
     }
 }
