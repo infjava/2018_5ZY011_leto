@@ -2,7 +2,7 @@ package sk.uniza.fri.wof.hra;
 
 import java.util.HashMap;
 import sk.uniza.fri.wof.svet.Miestnost;
-import sk.uniza.fri.wof.svet.Predmet;
+import sk.uniza.fri.wof.svet.IPredmet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,11 +17,11 @@ import sk.uniza.fri.wof.svet.Predmet;
 public class Hrac {
 
     private Miestnost aktualnaMiestnost;
-    private final HashMap<String, Predmet> inventar;
+    private final HashMap<String, IPredmet> inventar;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
-        this.inventar = new HashMap<String, Predmet>();
+        this.inventar = new HashMap<String, IPredmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -41,7 +41,7 @@ public class Hrac {
     }
 
     public void zdvihniPredmet(String nazovPredmetu) {
-        Predmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
+        IPredmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
         
         if (zdvihuty == null) {
             System.out.println("Nenasiel si predmet " + nazovPredmetu);
@@ -56,14 +56,14 @@ public class Hrac {
             System.out.println("Inventar je prazdny");
         } else {
             System.out.println("Inventar:");
-            for (Predmet predmet : this.inventar.values()) {
+            for (IPredmet predmet : this.inventar.values()) {
                 System.out.println("- " + predmet.getNazov());
             }
         }
     }
 
     public void polozPredmet(String nazovPredmetu) {
-        Predmet pokladany = this.inventar.remove(nazovPredmetu);
+        IPredmet pokladany = this.inventar.remove(nazovPredmetu);
         
         if (pokladany == null) {
             System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
@@ -71,5 +71,16 @@ public class Hrac {
         }
         
         this.aktualnaMiestnost.pridajPredmet(pokladany);
+    }
+
+    public void pouziPredmet(String nazovPredmetu) {
+        IPredmet pouzivany = this.inventar.get(nazovPredmetu);
+        
+        if (pouzivany == null) {
+            System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
+            return;
+        }
+        
+        ///////////
     }
 }

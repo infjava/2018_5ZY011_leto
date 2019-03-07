@@ -9,14 +9,11 @@ package sk.uniza.fri.wof.svet;
  *
  * @author janik
  */
-public class Predmet {
-    private final String nazov;
+public class Navleky implements IPredmet {
 
-    public Predmet(String nazov) {
-        this.nazov = nazov;
-    }
-
+    @Override
     public String getNazov() {
-        return this.nazov;
+        return "navleky";
     }
+    
 }

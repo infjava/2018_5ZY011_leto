@@ -17,7 +17,7 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
-        "profil", "poloz"
+        "profil", "poloz", "pouzi"
     };
 
     /**
@@ -72,6 +72,9 @@ public class Prikazy {
                 return false;
             case "poloz":
                 this.polozPredmet(hrac, prikaz);
+                return false;
+            case "pouzi":
+                this.pouziPredmet(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -144,5 +147,9 @@ public class Prikazy {
 
     private void polozPredmet(Hrac hrac, Prikaz prikaz) {
         hrac.polozPredmet(prikaz.getParameter());
+    }
+
+    private void pouziPredmet(Hrac hrac, Prikaz prikaz) {
+        hrac.pouziPredmet(prikaz.getParameter());
     }
 }

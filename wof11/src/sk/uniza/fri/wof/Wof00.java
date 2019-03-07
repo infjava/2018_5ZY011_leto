@@ -29,6 +29,7 @@ public class Wof00 {
             - zdvihni <nazov_predmetu>
             - poloz <nazov_predmetu>
             - prehladaj
+            - pouzi <nazov_predmetu>
     - Levely/Charakteristiky
         - Exp
         - Zivoty - HP
