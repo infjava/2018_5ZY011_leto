@@ -134,7 +134,7 @@ public class Prikazy {
 
     private void preskumajMiestnost(Hrac hrac) {
         Miestnost aktualna = hrac.getAktualnaMiestnost();
-        aktualna.vypisZoznamPredmetov();
+        aktualna.vypisZoznamObjektov();
     }
 
     private void zdvihniPredmet(Hrac hrac, Prikaz prikaz) {

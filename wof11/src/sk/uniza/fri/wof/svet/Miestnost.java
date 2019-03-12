@@ -2,6 +2,7 @@ package sk.uniza.fri.wof.svet;
 
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -71,15 +72,22 @@ public class Miestnost {
         this.predmety.put(predmet.getNazov(), predmet);
     }
 
-    public void vypisZoznamPredmetov() {
-        if (this.predmety.isEmpty()) {
+    public void vypisZoznamObjektov() {
+        if (this.predmety.isEmpty() && this.npccka.isEmpty()) {
             System.out.println("Nic si nenasiel.");
             return;
         }
         
-        System.out.println("Nasiel si tieto predmety:");
-        for (IPredmet predmet : this.predmety.values()) {
-            System.out.println("- " + predmet.getNazov());
+        this.vypisObjekty(this.predmety.keySet(), "Nasiel si tieto predmety");
+        this.vypisObjekty(this.npccka.keySet(), "Vidis tieto postavy");
+    }
+
+    private void vypisObjekty(Set<String> objekty, String popis) {
+        if (!objekty.isEmpty()) {
+            System.out.println(popis + ":");
+            for (String predmet : objekty) {
+                System.out.println("- " + predmet);
+            }
         }
     }
 
