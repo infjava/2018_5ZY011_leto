@@ -15,4 +15,6 @@ public interface IPredmet {
 
     void pouziSa();
     
+    boolean jeManipulovatelny();
+    
 }

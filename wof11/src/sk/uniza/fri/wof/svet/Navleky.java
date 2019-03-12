@@ -32,5 +32,9 @@ public class Navleky implements IPredmet {
             this.suObute = true;
         }
     }
-    
+
+    @Override
+    public boolean jeManipulovatelny() {
+        return !this.suObute;
+    }
 }

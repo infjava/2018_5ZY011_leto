@@ -25,4 +25,9 @@ public class VseobecnyPredmet implements IPredmet {
         System.out.println("Pouzivas, pouzivam, pouzivame....");
         System.out.println("Ale nist to nerobi.");
     }
+
+    @Override
+    public boolean jeManipulovatelny() {
+        return true;
+    }
 }

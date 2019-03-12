@@ -41,14 +41,20 @@ public class Hrac {
     }
 
     public void zdvihniPredmet(String nazovPredmetu) {
-        IPredmet zdvihuty = this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
+        IPredmet zdvihnuty = this.aktualnaMiestnost.getPredmet(nazovPredmetu);
         
-        if (zdvihuty == null) {
+        if (zdvihnuty == null) {
             System.out.println("Nenasiel si predmet " + nazovPredmetu);
             return;
         }
         
-        this.inventar.put(zdvihuty.getNazov(), zdvihuty);
+        if (!zdvihnuty.jeManipulovatelny()) {
+            System.out.println("Nemozes zdvihnut " + nazovPredmetu);
+            return;
+        }
+        
+        this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
+        this.inventar.put(zdvihnuty.getNazov(), zdvihnuty);
     }
 
     public void zobrazProfil() {
@@ -63,13 +69,19 @@ public class Hrac {
     }
 
     public void polozPredmet(String nazovPredmetu) {
-        IPredmet pokladany = this.inventar.remove(nazovPredmetu);
+        IPredmet pokladany = this.inventar.get(nazovPredmetu);
         
         if (pokladany == null) {
             System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
             return;
         }
         
+        if (!pokladany.jeManipulovatelny()) {
+            System.out.println("Nemozes polozit " + nazovPredmetu);
+            return;
+        }
+        
+        this.inventar.remove(nazovPredmetu);
         this.aktualnaMiestnost.pridajPredmet(pokladany);
     }
 
