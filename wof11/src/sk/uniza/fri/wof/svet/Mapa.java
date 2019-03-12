@@ -56,6 +56,7 @@ public class Mapa {
         rb.nastavVychod("sever", vratnica);
         
         ra6.nastavVychod("vychod", ra);
+        ra6.pridajNpc(new Upratovacka());
         
         wc.nastavVychod("zapad", ra);
         
