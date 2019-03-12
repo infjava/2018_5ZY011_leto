@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.hra.Hrac;
+
 /**
  *
  * @author janik
@@ -13,7 +15,7 @@ public interface IPredmet {
 
     String getNazov();
 
-    void pouziSa();
+    void pouziSa(Hrac hrac);
     
     boolean jeManipulovatelny();
     

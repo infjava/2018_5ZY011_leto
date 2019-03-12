@@ -93,6 +93,10 @@ public class Hrac {
             return;
         }
         
-        pouzivany.pouziSa();
+        pouzivany.pouziSa(this);
+    }
+
+    public void odstranPredmetZInventara(String nazov) {
+        this.inventar.remove(nazov);
     }
 }

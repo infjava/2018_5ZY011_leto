@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.hra.Hrac;
+
 /**
  *
  * @author janik
@@ -12,9 +14,11 @@ package sk.uniza.fri.wof.svet;
 public class Navleky implements IPredmet {
 
     private boolean suObute;
+    private int pocetObuti;
 
     public Navleky() {
         this.suObute = false;
+        this.pocetObuti = 0;
     }
     
     @Override
@@ -23,13 +27,19 @@ public class Navleky implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         if (this.suObute) {
             System.out.println("Vyzul si si navleky");
             this.suObute = false;
         } else {
-            System.out.println("Obul si si navleky");
-            this.suObute = true;
+            this.pocetObuti++;
+            if (this.pocetObuti > 5) {
+                System.out.println("Navleky su znicene");
+                hrac.odstranPredmetZInventara(this.getNazov());
+            } else {
+                System.out.println("Obul si si navleky");
+                this.suObute = true;
+            }
         }
     }
 

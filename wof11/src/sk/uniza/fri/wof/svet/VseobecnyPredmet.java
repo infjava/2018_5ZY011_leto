@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.hra.Hrac;
+
 /**
  *
  * @author janik
@@ -21,7 +23,7 @@ public class VseobecnyPredmet implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         System.out.println("Pouzivas, pouzivam, pouzivame....");
         System.out.println("Ale nist to nerobi.");
     }
