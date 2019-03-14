@@ -12,7 +12,53 @@ import sk.uniza.fri.wof.hra.Hrac;
  * @author janik
  */
 public class Upratovacka implements INpc {
-
+    /* Priklad rozhovoru:
+    *** A ***
+    1) Dobry den.
+    2) Kde najdem Janecha.
+    > 1
+    *** B ***
+    Padaj
+    ------------------------
+    *** A ***
+    1) Dobry den.
+    2) Kde najdem Janecha?
+    > 2
+    *** C ***
+    Kto je Janech
+    1) Najlepsi ucitel.
+    2) Tiez neviem.
+    3) Ten profak.
+    > 1
+    *** D ***
+    Toho nepoznam.
+    ------------------------
+    *** A ***
+    1) Dobry den.
+    2) Kde najdem Janecha?
+    > 2
+    *** C ***
+    Kto je Janech
+    1) Najlepsi ucitel.
+    2) Tiez neviem.
+    3) Ten profak.
+    > 2
+    *** E ***
+    Tak neotravuj.
+    ------------------------
+    *** A ***
+    1) Dobry den.
+    2) Kde najdem Janecha?
+    > 2
+    *** C ***
+    Kto je Janech
+    1) Najlepsi ucitel.
+    2) Tiez neviem.
+    3) Ten profak.
+    > 3
+    *** F ***
+    Je na wecku.
+    */
     @Override
     public String getMeno() {
         return "upratovacka";
