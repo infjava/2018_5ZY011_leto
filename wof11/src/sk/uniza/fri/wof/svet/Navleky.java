@@ -47,4 +47,8 @@ public class Navleky implements IPredmet {
     public boolean jeManipulovatelny() {
         return !this.suObute;
     }
+
+    boolean getObute() {
+        return this.suObute;
+    }
 }

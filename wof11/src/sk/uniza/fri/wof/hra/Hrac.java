@@ -3,6 +3,7 @@ package sk.uniza.fri.wof.hra;
 import java.util.HashMap;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.IPredmet;
+import sk.uniza.fri.wof.svet.Navleky;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,6 +35,8 @@ public class Hrac {
 
         if (novaMiestnost == null) {
             System.out.println("Tam nie je vychod!");
+        } else if (!novaMiestnost.mozeVstupit(this)) {
+            System.out.println("Neda sa vojst.");
         } else {
             this.aktualnaMiestnost = novaMiestnost;
             novaMiestnost.infoOMiestnosti();
@@ -98,5 +101,9 @@ public class Hrac {
 
     public void odstranPredmetZInventara(String nazov) {
         this.inventar.remove(nazov);
+    }
+
+    public IPredmet getPredmet(String nazovPredmetu) {
+        return this.inventar.get(nazovPredmetu);
     }
 }

@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.hra.Hrac;
+
 /**
  *
  * @author janik
@@ -12,5 +14,7 @@ package sk.uniza.fri.wof.svet;
 interface INpc {
 
     String getMeno();
+    
+    boolean mozeVstupitDoMiestnosti(Hrac hrac);
     
 }

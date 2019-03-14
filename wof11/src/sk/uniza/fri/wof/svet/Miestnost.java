@@ -4,6 +4,7 @@ package sk.uniza.fri.wof.svet;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
+import sk.uniza.fri.wof.hra.Hrac;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -101,5 +102,15 @@ public class Miestnost {
 
     void pridajNpc(INpc npc) {
         this.npccka.put(npc.getMeno(), npc);
+    }
+    
+    public boolean mozeVstupit(Hrac hrac) {
+        for (INpc npc : this.npccka.values()) {
+            if (!npc.mozeVstupitDoMiestnosti(hrac)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
