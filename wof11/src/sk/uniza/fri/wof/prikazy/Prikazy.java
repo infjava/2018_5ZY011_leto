@@ -4,27 +4,25 @@ import sk.uniza.fri.wof.hra.Hrac;
 import sk.uniza.fri.wof.svet.Miestnost;
 
 /**
- * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
- * Za ulohu ma rozpoznavat platne prikazy.
+ * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. Za ulohu ma
+ * rozpoznavat platne prikazy.
  *
- * @author  Michael Kolling and David J. Barnes
+ * @author Michael Kolling and David J. Barnes
  * @version 2006.03.30
- * @author  lokalizacia: Lubomir Sadlon, Jan Janech
+ * @author lokalizacia: Lubomir Sadlon, Jan Janech
  * @version 2012.02.21
  */
-
 public class Prikazy {
+
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
-        "profil", "poloz", "pouzi"
-    };
+        "profil", "poloz", "pouzi", "mapa",};
 
     /**
      * Kontroluje, ci nazov v parametri je platny prikaz.
-     *  
-     * @return true ak je parameter platny prikaz,
-     * false inak.
+     *
+     * @return true ak je parameter platny prikaz, false inak.
      */
     public boolean jePrikaz(String nazov) {
         for (int i = 0; i < Prikazy.PLATNE_PRIKAZY.length; i++) {
@@ -38,7 +36,7 @@ public class Prikazy {
 
     /**
      * Prevezne prikaz a vykona ho.
-     * 
+     *
      * @param prikaz prikaz, ktory ma byt vykonany.
      * @return true ak prikaz ukonci hru, inak vrati false.
      */
@@ -51,7 +49,7 @@ public class Prikazy {
         }
 
         String nazovPrikazu = prikaz.getNazov();
-        
+
         switch (nazovPrikazu) {
             case "pomoc":
                 this.vypisNapovedu();
@@ -76,16 +74,18 @@ public class Prikazy {
             case "pouzi":
                 this.pouziPredmet(hrac, prikaz);
                 return false;
+            case "mapa":
+                this.vykresliMapu();
+                return false;
             default:
                 return false;
         }
     }
 
     // implementacie prikazov:
-
     /**
-     * Vypise text pomocnika do terminaloveho okna.
-     * Text obsahuje zoznam moznych prikazov.
+     * Vypise text pomocnika do terminaloveho okna. Text obsahuje zoznam moznych
+     * prikazov.
      */
     private void vypisNapovedu() {
         System.out.println("Zabludil si. Si sam. Tulas sa po fakulte.");
@@ -98,10 +98,10 @@ public class Prikazy {
         System.out.println();
     }
 
-    /** 
-     * Vykona pokus o prechod do miestnosti urcenej danym smerom.
-     * Ak je tym smerom vychod, hrac prejde do novej miestnosti.
-     * Inak sa vypise chybova sprava do terminaloveho okna.
+    /**
+     * Vykona pokus o prechod do miestnosti urcenej danym smerom. Ak je tym
+     * smerom vychod, hrac prejde do novej miestnosti. Inak sa vypise chybova
+     * sprava do terminaloveho okna.
      */
     private void chodDoMiestnosti(Hrac hrac, Prikaz prikaz) {
         if (!prikaz.maParameter()) {
@@ -115,11 +115,10 @@ public class Prikazy {
         hrac.chodSmerom(smer);
     }
 
-    /** 
-     * Ukonci hru.
-     * Skotroluje cely prikaz a zisti, ci je naozaj koniec hry.
+    /**
+     * Ukonci hru. Skotroluje cely prikaz a zisti, ci je naozaj koniec hry.
      * Prikaz ukoncenia nema parameter.
-     * 
+     *
      * @return true, if this command quits the game, false otherwise.
      * @return true, ak prikaz konci hru, inak false.
      */
@@ -151,5 +150,41 @@ public class Prikazy {
 
     private void pouziPredmet(Hrac hrac, Prikaz prikaz) {
         hrac.pouziPredmet(prikaz.getParameter());
+    }
+
+    private void vykresliMapu() {
+        System.out.println(
+                  "                                                          +--------------+\n"
+                + "                                                          |              |\n"
+                + "                                                          |              |\n"
+                + "                                                          |              |\n"
+                + "                                                          |              |\n"
+                + "                                                          |  Chodba A    | +-------------+\n"
+                + "                                              +---------+ |              | |             |\n"
+                + "                                              |         | |              | |    WC       |\n"
+                + "                       +---------------+      |   RA6   +<+              | |             |\n"
+                + "                       |               |      |         | |              | +-------------+\n"
+                + "                       |    MHD        |      +---------+ +X-----^-------+\n"
+                + "                       |               |                 XXX     |\n"
+                + "                       +---------------+               XXX       |\n"
+                + "                               ^             +--------XX+        |\n"
+                + "                               |             |  Jedalen |        |\n"
+                + "   +-------------+      +------------------->-----------+        |\n"
+                + "   |             |      |               |                        |\n"
+                + "   |  Domov      +<-----+   Parkovisko  |                +---------------+  +-------------+\n"
+                + "   |             |      |               +---------------->               |  |             |\n"
+                + "   +-------------+      +---------------+                |    Vratnica   +->+    IC       |\n"
+                + "                                                         |               |  |             |\n"
+                + "                                                         +---------------+  +-------------+\n"
+                + "                                                                 |\n"
+                + "                                                           +-----v-----+\n"
+                + "                                                           |           |\n"
+                + "                                                           |           |\n"
+                + "                                                           |           |\n"
+                + "                                                           |  Chodba B |\n"
+                + "                                                           |           |\n"
+                + "                                                           |           |\n"
+                + "                                                           +-----------+\n"
+        );
     }
 }
