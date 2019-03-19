@@ -11,8 +11,12 @@ package sk.uniza.fri.wof.svet;
  */
 class StavDialogu {
 
-    StavDialogu(Object object, MoznostDialogu[] moznostDialogu) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private final String replika;
+    private final MoznostDialogu[] moznosti;
+
+    StavDialogu(String replika, MoznostDialogu[] moznosti) {
+        this.replika = replika;
+        this.moznosti = moznosti;
     }
     
 }

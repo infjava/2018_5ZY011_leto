@@ -11,12 +11,13 @@ package sk.uniza.fri.wof.svet;
  */
 public class Dialog {
 
-    Dialog(StavDialogu a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private final StavDialogu zaciatocnyStav;
+
+    Dialog(StavDialogu zaciatocnyStav) {
+        this.zaciatocnyStav = zaciatocnyStav;
     }
 
     public void zacni() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("NPC sa s tebou rozprava");
     }
-    
 }
