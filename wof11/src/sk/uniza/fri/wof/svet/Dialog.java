@@ -18,6 +18,6 @@ public class Dialog {
     }
 
     public void zacni() {
-        System.out.println("NPC sa s tebou rozprava");
+        this.zaciatocnyStav.vypisInfoOStave();
     }
 }

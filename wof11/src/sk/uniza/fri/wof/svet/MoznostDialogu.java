@@ -17,7 +17,9 @@ class MoznostDialogu {
     MoznostDialogu(StavDialogu cielovyStav, String text) {
         this.cielovyStav = cielovyStav;
         this.text = text;
-        
     }
-    
+
+    public String getText() {
+        return this.text;
+    }
 }

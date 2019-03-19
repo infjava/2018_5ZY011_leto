@@ -18,5 +18,16 @@ class StavDialogu {
         this.replika = replika;
         this.moznosti = moznosti;
     }
-    
+
+    void vypisInfoOStave() {
+        if (this.replika != null) {
+            System.out.println(this.replika);
+        }
+        
+        int poradoveCislo = 1;
+        for (MoznostDialogu moznostDialogu : this.moznosti) {
+            System.out.format("%d) %s%n", poradoveCislo, moznostDialogu.getText());
+            poradoveCislo++;
+        }
+    }
 }
