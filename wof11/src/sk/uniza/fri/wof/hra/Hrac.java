@@ -1,5 +1,6 @@
 package sk.uniza.fri.wof.hra;
 
+import sk.uniza.fri.wof.svet.Dialog;
 import java.util.HashMap;
 import sk.uniza.fri.wof.svet.INpc;
 import sk.uniza.fri.wof.svet.Miestnost;
@@ -114,5 +115,14 @@ public class Hrac {
             System.out.println("Nevidim nikoho takeho");
             return;
         }
+        
+        Dialog dialog = npc.getDialog();
+        
+        if (dialog == null) {
+            System.out.println("Joj, " + menoNpc + " nie je moc zhovorcive NPC");
+            return;
+        }
+        
+        dialog.zacni();
     }
 }

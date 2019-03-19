@@ -76,4 +76,9 @@ public class Upratovacka implements INpc {
         return true;
     }
 
+    @Override
+    public Dialog getDialog() {
+        return null;
+    }
+
 }

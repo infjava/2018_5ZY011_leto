@@ -5,17 +5,14 @@
  */
 package sk.uniza.fri.wof.svet;
 
-import sk.uniza.fri.wof.hra.Hrac;
-
 /**
  *
  * @author janik
  */
-public interface INpc {
+public class Dialog {
 
-    String getMeno();
+    public void zacni() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    boolean mozeVstupitDoMiestnosti(Hrac hrac);
-
-    Dialog getDialog();
 }
