@@ -11,7 +11,7 @@ import sk.uniza.fri.wof.hra.Hrac;
  *
  * @author janik
  */
-interface INpc {
+public interface INpc {
 
     String getMeno();
     

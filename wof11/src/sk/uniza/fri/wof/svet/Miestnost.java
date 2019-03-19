@@ -113,4 +113,8 @@ public class Miestnost {
         
         return true;
     }
+
+    public INpc getNpc(String menoNpc) {
+        return this.npccka.get(menoNpc);
+    }
 }

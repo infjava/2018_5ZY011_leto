@@ -17,7 +17,8 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
-        "profil", "poloz", "pouzi", "mapa",};
+        "profil", "poloz", "pouzi", "mapa", "oslov"
+    };
 
     /**
      * Kontroluje, ci nazov v parametri je platny prikaz.
@@ -76,6 +77,9 @@ public class Prikazy {
                 return false;
             case "mapa":
                 this.vykresliMapu();
+                return false;
+            case "oslov":
+                this.oslovNpc(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -186,5 +190,9 @@ public class Prikazy {
                 + "                                                           |           |\n"
                 + "                                                           +-----------+\n"
         );
+    }
+
+    private void oslovNpc(Hrac hrac, Prikaz prikaz) {
+        hrac.oslovNpc(prikaz.getParameter());
     }
 }

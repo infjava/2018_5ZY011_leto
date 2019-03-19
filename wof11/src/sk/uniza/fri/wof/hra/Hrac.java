@@ -1,9 +1,9 @@
 package sk.uniza.fri.wof.hra;
 
 import java.util.HashMap;
+import sk.uniza.fri.wof.svet.INpc;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.IPredmet;
-import sk.uniza.fri.wof.svet.Navleky;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -105,5 +105,14 @@ public class Hrac {
 
     public IPredmet getPredmet(String nazovPredmetu) {
         return this.inventar.get(nazovPredmetu);
+    }
+
+    public void oslovNpc(String menoNpc) {
+        INpc npc = this.aktualnaMiestnost.getNpc(menoNpc);
+        
+        if (npc == null) {
+            System.out.println("Nevidim nikoho takeho");
+            return;
+        }
     }
 }
