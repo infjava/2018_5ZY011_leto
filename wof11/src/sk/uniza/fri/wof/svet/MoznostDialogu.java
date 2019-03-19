@@ -9,13 +9,9 @@ package sk.uniza.fri.wof.svet;
  *
  * @author janik
  */
-public class Dialog {
+class MoznostDialogu {
 
-    Dialog(StavDialogu a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void zacni() {
+    MoznostDialogu(StavDialogu b, String dobry_den) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

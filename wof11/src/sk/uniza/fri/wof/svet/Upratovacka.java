@@ -78,7 +78,17 @@ public class Upratovacka implements INpc {
 
     @Override
     public Dialog getDialog() {
-        return null;
+        StavDialogu b = new StavDialogu("Padaj", new MoznostDialogu[0]);
+        StavDialogu c = new StavDialogu("Kto je Janech", new MoznostDialogu[0]);
+        
+        StavDialogu a = new StavDialogu(null, new MoznostDialogu[] {
+            new MoznostDialogu(b, "Dobry den."),
+            new MoznostDialogu(c, "Kde najdem Janecha."),
+        });
+        
+        Dialog dialog = new Dialog(a);
+        
+        return dialog;
     }
 
 }
