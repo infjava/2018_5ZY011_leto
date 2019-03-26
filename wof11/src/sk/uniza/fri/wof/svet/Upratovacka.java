@@ -88,10 +88,12 @@ public class Upratovacka implements INpc {
             new MoznostDialogu(e, "Tiez neviem."),
             new MoznostDialogu(f, "Ten profak.")
         );
+        StavDialogu g = new StavDialogu("Tu mas");
         
         StavDialogu a = new StavDialogu(null,
             new MoznostDialogu(b, "Dobry den."),
-            new MoznostDialogu(c, "Kde najdem Janecha.")
+            new MoznostDialogu(c, "Kde najdem Janecha."),
+            new MoznostDialogu(g, "Daj handru")
         );
         
         Dialog dialog = new Dialog(a);
