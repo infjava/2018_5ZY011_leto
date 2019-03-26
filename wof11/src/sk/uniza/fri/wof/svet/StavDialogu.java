@@ -30,4 +30,12 @@ class StavDialogu {
             poradoveCislo++;
         }
     }
+
+    StavDialogu getCielovyStav(int poradie) {
+        return this.moznosti[poradie - 1].getCielovyStav();
+    }
+
+    int getPocetMoznosti() {
+        return this.moznosti.length;
+    }
 }

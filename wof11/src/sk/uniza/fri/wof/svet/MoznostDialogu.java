@@ -22,4 +22,10 @@ class MoznostDialogu {
     public String getText() {
         return this.text;
     }
+
+    public StavDialogu getCielovyStav() {
+        return this.cielovyStav;
+    }
+    
+    
 }

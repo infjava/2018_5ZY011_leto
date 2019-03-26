@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import java.util.Scanner;
+
 /**
  *
  * @author janik
@@ -18,6 +20,18 @@ public class Dialog {
     }
 
     public void zacni() {
+        Scanner vstup = new Scanner(System.in);
+        
         this.zaciatocnyStav.vypisInfoOStave();
+        
+        int poradie;
+        final int pocetMoznosti = this.zaciatocnyStav.getPocetMoznosti();
+        do {
+            System.out.format("Odpoved(1-%d)> ", pocetMoznosti);
+            poradie = vstup.nextInt();
+        } while (poradie < 1 || poradie > pocetMoznosti);
+        
+        StavDialogu ciel = this.zaciatocnyStav.getCielovyStav(poradie);
+        ciel.vypisInfoOStave();
     }
 }
