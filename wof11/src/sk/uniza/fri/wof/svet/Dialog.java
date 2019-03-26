@@ -22,16 +22,21 @@ public class Dialog {
     public void zacni() {
         Scanner vstup = new Scanner(System.in);
         
-        this.zaciatocnyStav.vypisInfoOStave();
+        StavDialogu aktualny = this.zaciatocnyStav;
         
-        int poradie;
-        final int pocetMoznosti = this.zaciatocnyStav.getPocetMoznosti();
-        do {
-            System.out.format("Odpoved(1-%d)> ", pocetMoznosti);
-            poradie = vstup.nextInt();
-        } while (poradie < 1 || poradie > pocetMoznosti);
+        do {            
+            aktualny.vypisInfoOStave();
+            
+            int poradie;
+            final int pocetMoznosti = aktualny.getPocetMoznosti();
+            do {
+                System.out.format("Odpoved(1-%d)> ", pocetMoznosti);
+                poradie = vstup.nextInt();
+            } while (poradie < 1 || poradie > pocetMoznosti);
+            
+            aktualny = aktualny.getCielovyStav(poradie);
+        } while (!aktualny.getJeKoniec());
         
-        StavDialogu ciel = this.zaciatocnyStav.getCielovyStav(poradie);
-        ciel.vypisInfoOStave();
+        aktualny.vypisInfoOStave();
     }
 }

@@ -38,4 +38,8 @@ class StavDialogu {
     int getPocetMoznosti() {
         return this.moznosti.length;
     }
+    
+    boolean getJeKoniec() {
+        return this.moznosti.length == 0;
+    }
 }
