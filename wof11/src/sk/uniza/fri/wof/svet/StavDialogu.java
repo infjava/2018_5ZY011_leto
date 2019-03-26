@@ -14,7 +14,7 @@ class StavDialogu {
     private final String replika;
     private final MoznostDialogu[] moznosti;
 
-    StavDialogu(String replika, MoznostDialogu[] moznosti) {
+    StavDialogu(String replika, MoznostDialogu... moznosti) {
         this.replika = replika;
         this.moznosti = moznosti;
     }
