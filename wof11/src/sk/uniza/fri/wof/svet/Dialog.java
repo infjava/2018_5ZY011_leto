@@ -6,6 +6,7 @@
 package sk.uniza.fri.wof.svet;
 
 import java.util.Scanner;
+import sk.uniza.fri.wof.hra.Hrac;
 
 /**
  *
@@ -19,12 +20,13 @@ public class Dialog {
         this.zaciatocnyStav = zaciatocnyStav;
     }
 
-    public void zacni() {
+    public void zacni(Hrac hrac) {
         Scanner vstup = new Scanner(System.in);
         
         StavDialogu aktualny = this.zaciatocnyStav;
         
-        do {            
+        do {
+            aktualny.vykonajAkciu(hrac);
             aktualny.vypisInfoOStave();
             
             int poradie;
@@ -37,6 +39,7 @@ public class Dialog {
             aktualny = aktualny.getCielovyStav(poradie);
         } while (!aktualny.getJeKoniec());
         
+        aktualny.vykonajAkciu(hrac);
         aktualny.vypisInfoOStave();
     }
 }

@@ -123,6 +123,10 @@ public class Hrac {
             return;
         }
         
-        dialog.zacni();
+        dialog.zacni(this);
+    }
+
+    public void pridajPredmet(IPredmet predmet) {
+        this.inventar.put(predmet.getNazov(), predmet);
     }
 }

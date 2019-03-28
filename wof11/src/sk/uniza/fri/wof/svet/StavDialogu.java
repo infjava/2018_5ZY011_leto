@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.hra.Hrac;
+
 /**
  *
  * @author janik
@@ -41,5 +43,9 @@ class StavDialogu {
     
     boolean getJeKoniec() {
         return this.moznosti.length == 0;
+    }
+
+    void vykonajAkciu(Hrac hrac) {
+        
     }
 }
