@@ -15,9 +15,11 @@ import sk.uniza.fri.wof.hra.Hrac;
 public class Dialog {
 
     private final StavDialogu zaciatocnyStav;
+    private final INpc npc;
 
-    Dialog(StavDialogu zaciatocnyStav) {
+    Dialog(StavDialogu zaciatocnyStav, INpc npc) {
         this.zaciatocnyStav = zaciatocnyStav;
+        this.npc = npc;
     }
 
     public void zacni(Hrac hrac) {
@@ -26,7 +28,7 @@ public class Dialog {
         StavDialogu aktualny = this.zaciatocnyStav;
         
         do {
-            aktualny.vykonajAkciu(hrac);
+            aktualny.vykonajAkciu(hrac, this.npc);
             aktualny.vypisInfoOStave();
             
             int poradie;
@@ -39,7 +41,7 @@ public class Dialog {
             aktualny = aktualny.getCielovyStav(poradie);
         } while (!aktualny.getJeKoniec());
         
-        aktualny.vykonajAkciu(hrac);
+        aktualny.vykonajAkciu(hrac, this.npc);
         aktualny.vypisInfoOStave();
     }
 }

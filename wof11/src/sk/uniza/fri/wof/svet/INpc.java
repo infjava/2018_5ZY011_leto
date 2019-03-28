@@ -18,4 +18,6 @@ public interface INpc {
     boolean mozeVstupitDoMiestnosti(Hrac hrac);
 
     Dialog getDialog();
+
+    IPredmet vyberPredmetZInventara(String nazovPredmetu);
 }

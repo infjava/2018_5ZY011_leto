@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.svet;
 
+import java.util.HashMap;
 import sk.uniza.fri.wof.hra.Hrac;
 
 /**
@@ -59,6 +60,14 @@ public class Upratovacka implements INpc {
     *** F ***
     Je na wecku.
     */
+    
+    private final HashMap<String, IPredmet> inventar;
+    
+    public Upratovacka() {
+        this.inventar = new HashMap<String, IPredmet>();
+        this.inventar.put("handra", new VseobecnyPredmet("handra"));
+    }
+
     @Override
     public String getMeno() {
         return "upratovacka";
@@ -89,7 +98,12 @@ public class Upratovacka implements INpc {
             new MoznostDialogu(f, "Ten profak.")
         );
         
-        StavDialogu g = new StavDialoguSPredmetom("Tu mas", new VseobecnyPredmet("handra"));
+        StavDialogu g;
+        if (this.inventar.containsKey("handra")) {
+            g = new StavDialoguSPredmetom("Tu mas", "handra");
+        } else {
+            g = new StavDialogu("Aku handru? Ved si uz jednu dostal. Tak padaj!");
+        }
         
         StavDialogu a = new StavDialogu(null,
             new MoznostDialogu(b, "Dobry den."),
@@ -97,9 +111,14 @@ public class Upratovacka implements INpc {
             new MoznostDialogu(g, "Daj handru")
         );
         
-        Dialog dialog = new Dialog(a);
+        Dialog dialog = new Dialog(a, this);
         
         return dialog;
+    }
+
+    @Override
+    public IPredmet vyberPredmetZInventara(String nazovPredmetu) {
+        return this.inventar.remove(nazovPredmetu);
     }
 
 }

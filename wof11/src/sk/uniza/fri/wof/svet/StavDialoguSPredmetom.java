@@ -10,15 +10,15 @@ import sk.uniza.fri.wof.hra.Hrac;
 
 public class StavDialoguSPredmetom extends StavDialogu {
 
-    private final IPredmet predmet;
+    private final String nazovPredmetu;
 
-    public StavDialoguSPredmetom(String replika, IPredmet predmet, MoznostDialogu... moznosti) {
+    public StavDialoguSPredmetom(String replika, String nazovPredmetu, MoznostDialogu... moznosti) {
         super(replika, moznosti);
-        this.predmet = predmet;
+        this.nazovPredmetu = nazovPredmetu;
     }
 
     @Override
-    void vykonajAkciu(Hrac hrac) {
-        hrac.pridajPredmet(this.predmet);
+    void vykonajAkciu(Hrac hrac, INpc npc) {
+        hrac.pridajPredmet(npc.vyberPredmetZInventara(this.nazovPredmetu));
     }
 }

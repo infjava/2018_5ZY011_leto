@@ -45,7 +45,7 @@ class StavDialogu {
         return this.moznosti.length == 0;
     }
 
-    void vykonajAkciu(Hrac hrac) {
+    void vykonajAkciu(Hrac hrac, INpc npc) {
         
     }
 }
