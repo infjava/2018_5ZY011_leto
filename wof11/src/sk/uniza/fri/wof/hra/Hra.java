@@ -28,7 +28,6 @@ import sk.uniza.fri.wof.prikazy.Parser;
 public class Hra  {
     private Parser parser;
     private final Hrac hrac;
-    private final Mapa mapa;
     private final Prikazy prikazy;
     
     /**
@@ -36,9 +35,8 @@ public class Hra  {
      */
     public Hra() {
         this.prikazy = new Prikazy();
-        this.mapa = new Mapa();
         this.parser = new Parser(this.prikazy);
-        this.hrac = new Hrac(this.mapa.getStartovaciaMiestnost());
+        this.hrac = new Hrac(Mapa.getInstancia().getStartovaciaMiestnost());
     }
 
     /**
