@@ -1,5 +1,9 @@
 package sk.uniza.fri.wof.svet;
 
+import sk.uniza.fri.wof.svet.predmety.Navleky;
+import sk.uniza.fri.wof.svet.predmety.VseobecnyPredmet;
+import sk.uniza.fri.wof.svet.npc.Upratovacka;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

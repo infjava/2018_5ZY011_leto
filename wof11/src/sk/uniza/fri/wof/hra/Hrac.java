@@ -1,10 +1,10 @@
 package sk.uniza.fri.wof.hra;
 
-import sk.uniza.fri.wof.svet.Dialog;
+import sk.uniza.fri.wof.svet.npc.Dialog;
 import java.util.HashMap;
-import sk.uniza.fri.wof.svet.INpc;
+import sk.uniza.fri.wof.svet.npc.INpc;
 import sk.uniza.fri.wof.svet.Miestnost;
-import sk.uniza.fri.wof.svet.IPredmet;
+import sk.uniza.fri.wof.svet.predmety.IPredmet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

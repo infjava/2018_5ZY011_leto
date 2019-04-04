@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.svet;
+package sk.uniza.fri.wof.svet.npc;
 
 import java.util.Scanner;
 import sk.uniza.fri.wof.hra.Hrac;
