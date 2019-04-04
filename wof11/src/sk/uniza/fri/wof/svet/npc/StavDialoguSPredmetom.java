@@ -18,7 +18,7 @@ public class StavDialoguSPredmetom extends StavDialogu {
     }
 
     @Override
-    void vykonajAkciu(Hrac hrac, INpc npc) {
+    void vykonajAkciu(Hrac hrac, Npc npc) {
         hrac.pridajPredmet(npc.vyberPredmetZInventara(this.nazovPredmetu));
     }
 }

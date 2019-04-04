@@ -2,11 +2,11 @@ package sk.uniza.fri.wof.svet;
 
 
 import sk.uniza.fri.wof.svet.predmety.IPredmet;
-import sk.uniza.fri.wof.svet.npc.INpc;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
 import sk.uniza.fri.wof.hra.Hrac;
+import sk.uniza.fri.wof.svet.npc.Npc;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -24,7 +24,7 @@ public class Miestnost {
     private final String popisMiestnosti;
     private final TreeMap<String, Miestnost> vychody;
     private final HashMap<String, IPredmet> predmety;
-    private final HashMap<String, INpc> npccka;
+    private final HashMap<String, Npc> npccka;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -37,7 +37,7 @@ public class Miestnost {
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
         this.predmety = new HashMap<String, IPredmet>();
-        this.npccka = new HashMap<String, INpc>();
+        this.npccka = new HashMap<String, Npc>();
     }
 
     /**
@@ -102,12 +102,12 @@ public class Miestnost {
         return this.predmety.get(nazovPredmetu);
     }
 
-    void pridajNpc(INpc npc) {
+    void pridajNpc(Npc npc) {
         this.npccka.put(npc.getMeno(), npc);
     }
     
     public boolean mozeVstupit(Hrac hrac) {
-        for (INpc npc : this.npccka.values()) {
+        for (Npc npc : this.npccka.values()) {
             if (!npc.mozeVstupitDoMiestnosti(hrac)) {
                 return false;
             }
@@ -116,7 +116,7 @@ public class Miestnost {
         return true;
     }
 
-    public INpc getNpc(String menoNpc) {
+    public Npc getNpc(String menoNpc) {
         return this.npccka.get(menoNpc);
     }
 }

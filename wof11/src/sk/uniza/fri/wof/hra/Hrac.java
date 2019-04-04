@@ -2,9 +2,9 @@ package sk.uniza.fri.wof.hra;
 
 import sk.uniza.fri.wof.svet.npc.Dialog;
 import java.util.HashMap;
-import sk.uniza.fri.wof.svet.npc.INpc;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.predmety.IPredmet;
+import sk.uniza.fri.wof.svet.npc.Npc;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -109,7 +109,7 @@ public class Hrac {
     }
 
     public void oslovNpc(String menoNpc) {
-        INpc npc = this.aktualnaMiestnost.getNpc(menoNpc);
+        Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
         if (npc == null) {
             System.out.println("Nevidim nikoho takeho");

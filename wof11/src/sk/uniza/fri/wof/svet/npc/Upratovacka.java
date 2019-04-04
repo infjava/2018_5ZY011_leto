@@ -5,9 +5,7 @@
  */
 package sk.uniza.fri.wof.svet.npc;
 
-import java.util.HashMap;
 import sk.uniza.fri.wof.hra.Hrac;
-import sk.uniza.fri.wof.svet.predmety.IPredmet;
 import sk.uniza.fri.wof.svet.predmety.Navleky;
 import sk.uniza.fri.wof.svet.predmety.VseobecnyPredmet;
 
@@ -15,7 +13,7 @@ import sk.uniza.fri.wof.svet.predmety.VseobecnyPredmet;
  *
  * @author janik
  */
-public class Upratovacka implements INpc {
+public class Upratovacka extends Npc {
     /* Priklad rozhovoru:
     *** A ***
     1) Dobry den.
@@ -64,16 +62,9 @@ public class Upratovacka implements INpc {
     Je na wecku.
     */
     
-    private final HashMap<String, IPredmet> inventar;
-    
     public Upratovacka() {
-        this.inventar = new HashMap<String, IPredmet>();
-        this.inventar.put("handra", new VseobecnyPredmet("handra"));
-    }
-
-    @Override
-    public String getMeno() {
-        return "upratovacka";
+        super("upratovacka");
+        this.pridajDoInventara(new VseobecnyPredmet("handra"));
     }
 
     @Override
@@ -102,7 +93,7 @@ public class Upratovacka implements INpc {
         );
         
         StavDialogu g;
-        if (this.inventar.containsKey("handra")) {
+        if (this.maPredmet("handra")) {
             g = new StavDialoguSPredmetom("Tu mas", "handra");
         } else {
             g = new StavDialogu("Aku handru? Ved si uz jednu dostal. Tak padaj!");
@@ -118,10 +109,4 @@ public class Upratovacka implements INpc {
         
         return dialog;
     }
-
-    @Override
-    public IPredmet vyberPredmetZInventara(String nazovPredmetu) {
-        return this.inventar.remove(nazovPredmetu);
-    }
-
 }

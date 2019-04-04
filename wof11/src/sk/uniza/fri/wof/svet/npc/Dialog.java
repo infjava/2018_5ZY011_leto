@@ -15,9 +15,9 @@ import sk.uniza.fri.wof.hra.Hrac;
 public class Dialog {
 
     private final StavDialogu zaciatocnyStav;
-    private final INpc npc;
+    private final Npc npc;
 
-    Dialog(StavDialogu zaciatocnyStav, INpc npc) {
+    Dialog(StavDialogu zaciatocnyStav, Npc npc) {
         this.zaciatocnyStav = zaciatocnyStav;
         this.npc = npc;
     }
