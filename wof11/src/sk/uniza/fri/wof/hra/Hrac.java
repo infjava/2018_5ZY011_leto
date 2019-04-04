@@ -1,5 +1,9 @@
 package sk.uniza.fri.wof.hra;
 
+import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
+import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
+import sk.uniza.fri.wof.hra.exceptions.NenasielSaVychodException;
+import sk.uniza.fri.wof.hra.exceptions.NenasielSaPredmetException;
 import sk.uniza.fri.wof.svet.npc.Dialog;
 import java.util.HashMap;
 import sk.uniza.fri.wof.svet.Miestnost;
@@ -30,31 +34,31 @@ public class Hrac {
         return this.aktualnaMiestnost;
     }
 
-    public void chodSmerom(String smer) {
+    public void chodSmerom(String smer)
+            throws NenasielSaVychodException, NedaSaVstupitException {
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
         Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
 
         if (novaMiestnost == null) {
-            System.out.println("Tam nie je vychod!");
+            throw new NenasielSaVychodException();
         } else if (!novaMiestnost.mozeVstupit(this)) {
-            System.out.println("Neda sa vojst.");
+            throw new NedaSaVstupitException();
         } else {
             this.aktualnaMiestnost = novaMiestnost;
             novaMiestnost.infoOMiestnosti();
         }
     }
 
-    public void zdvihniPredmet(String nazovPredmetu) {
+    public void zdvihniPredmet(String nazovPredmetu)
+            throws NenasielSaPredmetException, NemanipulovatelnyPredmetException {
         IPredmet zdvihnuty = this.aktualnaMiestnost.getPredmet(nazovPredmetu);
         
         if (zdvihnuty == null) {
-            System.out.println("Nenasiel si predmet " + nazovPredmetu);
-            return;
+            throw new NenasielSaPredmetException();
         }
         
         if (!zdvihnuty.jeManipulovatelny()) {
-            System.out.println("Nemozes zdvihnut " + nazovPredmetu);
-            return;
+            throw new NemanipulovatelnyPredmetException();
         }
         
         this.aktualnaMiestnost.odstranPredmet(nazovPredmetu);
@@ -72,29 +76,28 @@ public class Hrac {
         }
     }
 
-    public void polozPredmet(String nazovPredmetu) {
+    public void polozPredmet(String nazovPredmetu)
+            throws NemanipulovatelnyPredmetException, NenasielSaPredmetException {
         IPredmet pokladany = this.inventar.get(nazovPredmetu);
         
         if (pokladany == null) {
-            System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
-            return;
+            throw new NenasielSaPredmetException();
         }
         
         if (!pokladany.jeManipulovatelny()) {
-            System.out.println("Nemozes polozit " + nazovPredmetu);
-            return;
+            throw new NemanipulovatelnyPredmetException();
         }
         
         this.inventar.remove(nazovPredmetu);
         this.aktualnaMiestnost.pridajPredmet(pokladany);
     }
 
-    public void pouziPredmet(String nazovPredmetu) {
+    public void pouziPredmet(String nazovPredmetu)
+            throws NenasielSaPredmetException {
         IPredmet pouzivany = this.inventar.get(nazovPredmetu);
         
         if (pouzivany == null) {
-            System.out.println("Nemas predmet " + nazovPredmetu + " v inventari");
-            return;
+            throw new NenasielSaPredmetException();
         }
         
         pouzivany.pouziSa(this);

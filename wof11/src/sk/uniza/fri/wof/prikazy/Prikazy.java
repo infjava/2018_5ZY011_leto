@@ -1,6 +1,10 @@
 package sk.uniza.fri.wof.prikazy;
 
 import sk.uniza.fri.wof.hra.Hrac;
+import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
+import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
+import sk.uniza.fri.wof.hra.exceptions.NenasielSaPredmetException;
+import sk.uniza.fri.wof.hra.exceptions.NenasielSaVychodException;
 import sk.uniza.fri.wof.svet.Miestnost;
 
 /**
@@ -116,7 +120,13 @@ public class Prikazy {
 
         String smer = prikaz.getParameter();
 
-        hrac.chodSmerom(smer);
+        try {
+            hrac.chodSmerom(smer);
+        } catch (NenasielSaVychodException ex) {
+            System.out.println("Nenasiel sa vychod");
+        } catch (NedaSaVstupitException ex) {
+            System.out.println("Do miestnosti sa neda vstupit");
+        }
     }
 
     /**
@@ -141,7 +151,13 @@ public class Prikazy {
     }
 
     private void zdvihniPredmet(Hrac hrac, Prikaz prikaz) {
-        hrac.zdvihniPredmet(prikaz.getParameter());
+        try {
+            hrac.zdvihniPredmet(prikaz.getParameter());
+        } catch (NenasielSaPredmetException ex) {
+            System.out.println("Taky predmet nikde nevidis");
+        } catch (NemanipulovatelnyPredmetException ex) {
+            System.out.println("Nejde ani len pohnut");
+        }
     }
 
     private void zobrazProfilHraca(Hrac hrac) {
@@ -149,11 +165,21 @@ public class Prikazy {
     }
 
     private void polozPredmet(Hrac hrac, Prikaz prikaz) {
-        hrac.polozPredmet(prikaz.getParameter());
+        try {
+            hrac.polozPredmet(prikaz.getParameter());
+        } catch (NemanipulovatelnyPredmetException ex) {
+            System.out.println("To nemas");
+        } catch (NenasielSaPredmetException ex) {
+            System.out.println("Je v tvojom inventari ako prilepeny");
+        }
     }
 
     private void pouziPredmet(Hrac hrac, Prikaz prikaz) {
-        hrac.pouziPredmet(prikaz.getParameter());
+        try {
+            hrac.pouziPredmet(prikaz.getParameter());
+        } catch (NenasielSaPredmetException ex) {
+            System.out.println("To nemas");
+        }
     }
 
     private void vykresliMapu() {
