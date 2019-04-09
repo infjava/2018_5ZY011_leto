@@ -98,7 +98,7 @@ public class Parser {
         if (!this.nacitaneCisla.isEmpty()) {
             int ret = this.nacitaneCisla.remove(0);
             
-            System.out.println(ret);
+            System.out.format("%d (macro)%n", ret);
             
             return ret;
         }

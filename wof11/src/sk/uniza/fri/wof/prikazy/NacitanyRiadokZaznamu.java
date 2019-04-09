@@ -70,6 +70,6 @@ class NacitanyRiadokZaznamu {
     }
 
     void vypis() {
-        System.out.format("> %s %s%n", this.prikaz, this.parameter);
+        System.out.format("> %s %s (macro)%n", this.prikaz, this.parameter);
     }
 }
