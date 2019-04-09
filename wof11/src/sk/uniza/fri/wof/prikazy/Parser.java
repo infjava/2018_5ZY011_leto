@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Trieda Parser cita vstup zadany hracom do terminaloveho okna a pokusi sa
@@ -23,6 +21,8 @@ public class Parser {
     private Prikazy prikazy;  // odkaz na pripustne nazvy prikazov
     private Scanner citac;         // zdroj vstupov od hraca
     private final ArrayList<RiadokZaznamu> zaznam;
+    private final ArrayList<NacitanyRiadokZaznamu> nacitanyZaznam;
+    private final ArrayList<Integer> nacitaneCisla;
 
     /**
      * Vytvori citac na citanie vstupov z terminaloveho okna.
@@ -31,12 +31,23 @@ public class Parser {
         this.prikazy = prikazy;
         this.citac = new Scanner(System.in);
         this.zaznam = new ArrayList<RiadokZaznamu>();
+        this.nacitanyZaznam = new ArrayList<NacitanyRiadokZaznamu>();
+        this.nacitaneCisla = new ArrayList<Integer>();
     }
 
     /**
      * @return prikaz zadany hracom
      */
     public Prikaz nacitajPrikaz() {
+        this.nacitaneCisla.clear();
+        
+        if (!this.nacitanyZaznam.isEmpty()) {
+            NacitanyRiadokZaznamu nacitanyRiadokZaznamu = this.nacitanyZaznam.remove(0);
+            this.nacitaneCisla.addAll(nacitanyRiadokZaznamu.getCisla());
+            nacitanyRiadokZaznamu.vypis();
+            return nacitanyRiadokZaznamu.getPrikaz(this.prikazy);
+        }
+        
         System.out.print("> ");     // vyzva pre hraca na zadanie prikazu
 
         String vstupnyRiadok = this.citac.nextLine();
@@ -84,11 +95,28 @@ public class Parser {
     }
     
     public int citajInt() {
+        if (!this.nacitaneCisla.isEmpty()) {
+            int ret = this.nacitaneCisla.remove(0);
+            
+            System.out.println(ret);
+            
+            return ret;
+        }
+        
         int ret = Integer.parseInt(this.citac.nextLine());
         
         // pridame precitane cislo do posledneho zaznamu
         this.zaznam.get(this.zaznam.size() - 1).pridajPrecitaneCislo(ret);
         
         return ret;
+    }
+
+    void nacitajZoSuboru(String nazov) throws FileNotFoundException {
+        this.nacitanyZaznam.clear();
+        try (Scanner citacMakra = new Scanner(new File(nazov + ".cmd"))) {
+            while (citacMakra.hasNextLine()) {
+                this.nacitanyZaznam.add(NacitanyRiadokZaznamu.read(citacMakra));
+            }
+        }
     }
 }

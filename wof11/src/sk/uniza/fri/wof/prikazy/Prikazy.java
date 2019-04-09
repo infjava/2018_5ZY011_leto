@@ -1,5 +1,6 @@
 package sk.uniza.fri.wof.prikazy;
 
+import java.io.FileNotFoundException;
 import sk.uniza.fri.wof.hra.Hrac;
 import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
@@ -21,7 +22,8 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
-        "profil", "poloz", "pouzi", "mapa", "oslov", "zaznamenaj"
+        "profil", "poloz", "pouzi", "mapa", "oslov", "zaznamenaj",
+        "zopakuj"
     };
 
     /**
@@ -87,6 +89,9 @@ public class Prikazy {
                 return false;
             case "zaznamenaj":
                 this.zaznamenajMakro(parser, prikaz);
+                return false;
+            case "zopakuj":
+                this.zopakujMakro(parser, prikaz);
                 return false;
             default:
                 return false;
@@ -230,5 +235,13 @@ public class Prikazy {
         int pocet = parser.citajInt();
         
         parser.zapisDoSuboru(prikaz.getParameter(), pocet);
+    }
+
+    private void zopakujMakro(Parser parser, Prikaz prikaz) {
+        try {
+            parser.nacitajZoSuboru(prikaz.getParameter());
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nenaslo sa makro");
+        }
     }
 }
