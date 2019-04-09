@@ -21,7 +21,7 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
-        "profil", "poloz", "pouzi", "mapa", "oslov"
+        "profil", "poloz", "pouzi", "mapa", "oslov", "zaznamenaj"
     };
 
     /**
@@ -45,7 +45,7 @@ public class Prikazy {
      * @param prikaz prikaz, ktory ma byt vykonany.
      * @return true ak prikaz ukonci hru, inak vrati false.
      */
-    public boolean vykonajPrikaz(Hrac hrac, Prikaz prikaz) {
+    public boolean vykonajPrikaz(Hrac hrac, Parser parser, Prikaz prikaz) {
         boolean jeKoniec = false;
 
         if (prikaz.jeNeznamy()) {
@@ -83,7 +83,10 @@ public class Prikazy {
                 this.vykresliMapu();
                 return false;
             case "oslov":
-                this.oslovNpc(hrac, prikaz);
+                this.oslovNpc(hrac, parser, prikaz);
+                return false;
+            case "zaznamenaj":
+                this.zaznamenajMakro(parser, prikaz);
                 return false;
             default:
                 return false;
@@ -218,7 +221,14 @@ public class Prikazy {
         );
     }
 
-    private void oslovNpc(Hrac hrac, Prikaz prikaz) {
-        hrac.oslovNpc(prikaz.getParameter());
+    private void oslovNpc(Hrac hrac, Parser parser, Prikaz prikaz) {
+        hrac.oslovNpc(parser, prikaz.getParameter());
+    }
+
+    private void zaznamenajMakro(Parser parser, Prikaz prikaz) {
+        System.out.print("Zadaj pocet:");
+        int pocet = parser.citajInt();
+        
+        parser.zapisDoSuboru(prikaz.getParameter(), pocet);
     }
 }

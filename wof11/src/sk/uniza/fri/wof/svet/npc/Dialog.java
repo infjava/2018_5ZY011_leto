@@ -7,6 +7,7 @@ package sk.uniza.fri.wof.svet.npc;
 
 import java.util.Scanner;
 import sk.uniza.fri.wof.hra.Hrac;
+import sk.uniza.fri.wof.prikazy.Parser;
 
 /**
  *
@@ -22,9 +23,7 @@ public class Dialog {
         this.npc = npc;
     }
 
-    public void zacni(Hrac hrac) {
-        Scanner vstup = new Scanner(System.in);
-        
+    public void zacni(Parser parser, Hrac hrac) {
         StavDialogu aktualny = this.zaciatocnyStav;
         
         do {
@@ -35,7 +34,7 @@ public class Dialog {
             final int pocetMoznosti = aktualny.getPocetMoznosti();
             do {
                 System.out.format("Odpoved(1-%d)> ", pocetMoznosti);
-                poradie = vstup.nextInt();
+                poradie = parser.citajInt();
             } while (poradie < 1 || poradie > pocetMoznosti);
             
             aktualny = aktualny.getCielovyStav(poradie);

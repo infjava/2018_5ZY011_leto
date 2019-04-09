@@ -6,6 +6,7 @@ import sk.uniza.fri.wof.hra.exceptions.NenasielSaVychodException;
 import sk.uniza.fri.wof.hra.exceptions.NenasielSaPredmetException;
 import sk.uniza.fri.wof.svet.npc.Dialog;
 import java.util.HashMap;
+import sk.uniza.fri.wof.prikazy.Parser;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.predmety.IPredmet;
 import sk.uniza.fri.wof.svet.npc.Npc;
@@ -111,7 +112,7 @@ public class Hrac {
         return this.inventar.get(nazovPredmetu);
     }
 
-    public void oslovNpc(String menoNpc) {
+    public void oslovNpc(Parser parser, String menoNpc) {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
         if (npc == null) {
@@ -126,7 +127,7 @@ public class Hrac {
             return;
         }
         
-        dialog.zacni(this);
+        dialog.zacni(parser, this);
     }
 
     public void pridajPredmet(IPredmet predmet) {

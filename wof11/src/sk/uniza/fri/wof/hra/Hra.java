@@ -56,7 +56,7 @@ public class Hra  {
         
         do {
             Prikaz prikaz = this.parser.nacitajPrikaz();
-            jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, prikaz);
+            jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, this.parser, prikaz);
         } while (!jeKoniec);
         
         System.out.println("Maj sa fajn!");
