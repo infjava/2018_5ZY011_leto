@@ -1,5 +1,7 @@
 package sk.uniza.fri.wof.hra;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
 import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
 import sk.uniza.fri.wof.hra.exceptions.NenasielSaVychodException;
@@ -132,5 +134,9 @@ public class Hrac {
 
     public void pridajPredmet(IPredmet predmet) {
         this.inventar.put(predmet.getNazov(), predmet);
+    }
+
+    public void ulozSave(DataOutputStream zapisovac) throws IOException {
+        zapisovac.writeUTF(this.aktualnaMiestnost.getNazov());
     }
 }

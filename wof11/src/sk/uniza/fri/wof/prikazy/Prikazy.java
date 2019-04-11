@@ -1,6 +1,10 @@
 package sk.uniza.fri.wof.prikazy;
 
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hra.Hrac;
 import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
@@ -18,12 +22,15 @@ import sk.uniza.fri.wof.svet.Miestnost;
  * @version 2012.02.21
  */
 public class Prikazy {
+    
+    private static final int SAVE_MAGIC_NUMBER = 468763546;
+    private static final int SAVE_VERSION = 0;
 
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
         "profil", "poloz", "pouzi", "mapa", "oslov", "zaznamenaj",
-        "zopakuj"
+        "zopakuj", "save"
     };
 
     /**
@@ -92,6 +99,9 @@ public class Prikazy {
                 return false;
             case "zopakuj":
                 this.zopakujMakro(parser, prikaz);
+                return false;
+            case "save":
+                this.ulozSave(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -242,6 +252,18 @@ public class Prikazy {
             parser.nacitajZoSuboru(prikaz.getParameter());
         } catch (FileNotFoundException ex) {
             System.out.println("Nenaslo sa makro");
+        }
+    }
+
+    private void ulozSave(Hrac hrac, Prikaz prikaz) {
+        try (DataOutputStream zapisovac = new DataOutputStream(new FileOutputStream(new File(prikaz.getParameter() + ".sav")))) {
+            zapisovac.writeInt(Prikazy.SAVE_MAGIC_NUMBER);
+            zapisovac.writeInt(Prikazy.SAVE_VERSION);
+            hrac.ulozSave(zapisovac);
+        } catch (IOException ex) {
+            System.out.println("Nastala divna chyba, kontaktuj programatora.");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 }
