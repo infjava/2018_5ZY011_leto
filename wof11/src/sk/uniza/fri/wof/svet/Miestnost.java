@@ -25,6 +25,7 @@ public class Miestnost {
     private final TreeMap<String, Miestnost> vychody;
     private final HashMap<String, IPredmet> predmety;
     private final HashMap<String, Npc> npccka;
+    private final String nazov;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -33,7 +34,8 @@ public class Miestnost {
      * 
      * @param popis text popisu miestnosti.
      */
-    public Miestnost(String popis) {
+    public Miestnost(String nazov, String popis) {
+        this.nazov = nazov;
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
         this.predmety = new HashMap<String, IPredmet>();
@@ -51,6 +53,10 @@ public class Miestnost {
         this.vychody.put(smer, miestnost);
     }
 
+    public String getNazov() {
+        return this.nazov;
+    }
+
     /**
      * @return textovy popis miestnosti.
      */
@@ -59,7 +65,8 @@ public class Miestnost {
     }
 
     public void infoOMiestnosti() {
-        System.out.println("Teraz si v miestnosti " + this.getPopis());
+        System.out.println("Teraz si v miestnosti " + this.getNazov());
+        System.out.println(this.getPopis());
         System.out.print("Vychody: ");
         for (String smer : this.vychody.keySet()) {
             System.out.print(smer + " ");
@@ -118,5 +125,11 @@ public class Miestnost {
 
     public Npc getNpc(String menoNpc) {
         return this.npccka.get(menoNpc);
+    }
+
+    Miestnost[] getCieloveMiestnosti() {
+        Miestnost[] ret = new Miestnost[this.vychody.size()];
+        this.vychody.values().toArray(ret);
+        return ret;
     }
 }
