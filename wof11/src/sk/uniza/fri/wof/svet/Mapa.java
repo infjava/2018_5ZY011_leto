@@ -174,5 +174,14 @@ public class Mapa {
         
         return ret;
     }
-    
+
+    public Miestnost getMiestnost(String nazovMiestnosti) {
+        for (Miestnost miestnost : this.zoznamMiestnosti) {
+            if (miestnost.getNazov().equals(nazovMiestnosti)) {
+                return miestnost;
+            }
+        }
+        
+        return null;
+    }
 }

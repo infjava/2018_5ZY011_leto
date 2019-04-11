@@ -1,10 +1,14 @@
 package sk.uniza.fri.wof.prikazy;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sk.uniza.fri.wof.hra.Hrac;
 import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
@@ -30,7 +34,7 @@ public class Prikazy {
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "preskumaj", "zdvihni",
         "profil", "poloz", "pouzi", "mapa", "oslov", "zaznamenaj",
-        "zopakuj", "save"
+        "zopakuj", "save", "load"
     };
 
     /**
@@ -102,6 +106,9 @@ public class Prikazy {
                 return false;
             case "save":
                 this.ulozSave(hrac, prikaz);
+                return false;
+            case "load":
+                this.nacitajSave(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -260,6 +267,33 @@ public class Prikazy {
             zapisovac.writeInt(Prikazy.SAVE_MAGIC_NUMBER);
             zapisovac.writeInt(Prikazy.SAVE_VERSION);
             hrac.ulozSave(zapisovac);
+        } catch (IOException ex) {
+            System.out.println("Nastala divna chyba, kontaktuj programatora.");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    private void nacitajSave(Hrac hrac, Prikaz prikaz) {
+        try (DataInputStream citac = new DataInputStream(new FileInputStream(new File(prikaz.getParameter() + ".sav")))) {
+            int magicNumber = citac.readInt();
+            if (magicNumber != Prikazy.SAVE_MAGIC_NUMBER) {
+                System.out.println("Toto nie je save subor.");
+                return;
+            }
+            
+            int verzia = citac.readInt();
+            if (verzia > Prikazy.SAVE_VERSION) {
+                System.out.println("Save bol vytvoreny v prilis novej verzii hry");
+                System.out.println("Nedokazem nacitat!");
+                return;
+            }
+            
+            hrac.nacitajSave(citac, verzia);
+            
+            hrac.getAktualnaMiestnost().infoOMiestnosti();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nenasiel sa prislusny save subor.");
         } catch (IOException ex) {
             System.out.println("Nastala divna chyba, kontaktuj programatora.");
             System.out.println(ex.getMessage());

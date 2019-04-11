@@ -1,5 +1,6 @@
 package sk.uniza.fri.wof.hra;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
@@ -9,6 +10,7 @@ import sk.uniza.fri.wof.hra.exceptions.NenasielSaPredmetException;
 import sk.uniza.fri.wof.svet.npc.Dialog;
 import java.util.HashMap;
 import sk.uniza.fri.wof.prikazy.Parser;
+import sk.uniza.fri.wof.svet.Mapa;
 import sk.uniza.fri.wof.svet.Miestnost;
 import sk.uniza.fri.wof.svet.predmety.IPredmet;
 import sk.uniza.fri.wof.svet.npc.Npc;
@@ -138,5 +140,10 @@ public class Hrac {
 
     public void ulozSave(DataOutputStream zapisovac) throws IOException {
         zapisovac.writeUTF(this.aktualnaMiestnost.getNazov());
+    }
+
+    public void nacitajSave(DataInputStream citac, int verzia) throws IOException {
+        String nazovMiestnosti = citac.readUTF();
+        this.aktualnaMiestnost = Mapa.getInstancia().getMiestnost(nazovMiestnosti);
     }
 }
