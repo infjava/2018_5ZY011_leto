@@ -1,0 +1,43 @@
+meno: upratovacka
+
+trieda: Upratovacka
+
+inventar:
+    VseobecnyPredmet handra
+        
+StavDialogu a:
+    Dobry den. => b
+    Kde najdem Janecha. => c
+    Daj handru => g
+
+StavDialogu b:
+    Padaj
+
+StavDialogu c:
+    Kto je Janech
+    Najlepsi ucitel. => d
+    Tiez neviem. => e
+    Ten profak. => f
+
+StavDialogu d:
+    Toho nepoznam.
+
+StavDialogu e:
+    Tak neotravuj.
+
+StavDialogu f:
+    Je na wecku.
+        
+IfDialogu g:
+    predmet handra
+    true => h
+    false => i
+
+StavDialoguSPredmetom h:
+    Tu mas.
+    predmet handra
+
+StavDialogu i:
+    Aku handru? Ved si uz jednu dostal. Tak padaj!
+
+StartDialogu a

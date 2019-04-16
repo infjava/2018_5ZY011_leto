@@ -1,0 +1,8 @@
+meno: upratovacka
+
+trieda: VseobecnaNpc
+
+StavDialoguSMiestnostami a:
+    Kam chces ist?
+
+StartDialogu a
