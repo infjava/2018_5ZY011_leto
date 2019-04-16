@@ -1,0 +1,115 @@
+Miestnost mhd:
+    Stale stoji. Ujo sofer niekam odbehol
+
+    vychody:    
+        juh: parkovisko
+
+Miestnost domov:
+    Vsade dobre, na FRI najlepsie
+
+    vychody:
+        vychod: parkovisko
+
+Miestnost parkovisko:
+    Pokojne tu stoja auta. Treba byt ticho a nevyplasit ich
+
+    vychody:
+        sever: mhd
+        zapad: domov
+        vychod1: jedalen
+        vychod2: vratnica
+
+    predmety:
+        VseobecnyPredmet kluc
+
+Miestnost jedalen:
+    Mnam mnam, tu to vonia
+
+    vychody:
+        zapad: parkovisko
+        hore: ra
+
+    predmety:
+        Navleky
+        VseobecnyPredmet bageta
+
+Miestnost vratnica:
+    Tu sedi pani vratnicka
+
+    vychody:
+        zapad: parkovisko
+        sever: ra
+        juh: rb
+        vychod: ic
+
+    npc:
+        Vratnicka
+
+Miestnost ra:
+    Dlha chodba
+
+    vychody:
+        dole: jedalen
+        zapad: ra6
+        vychod: wc
+        juh: vratnica
+
+Miestnost rb:
+    Tmava chodba
+
+    vychody:
+        sever: vratnica
+
+Miestnost ra6:
+    Labacik plny laboratornych (teda ehm vlastne pocitacovych) mysi
+
+    vychody:
+        vychod: ra
+
+    npc:
+        Upratovacka
+
+Miestnost wc:
+    Smradocek, ale teplucko
+
+    vychody:
+        zapad: ra
+
+Miestnost ic:
+    Informacne centrum, prave prebiehaju volby
+
+    vychody:
+        zapad: vratnica
+
+GrafickaMapa
+                                                          +--------------+
+                                                          |              |
+                                                          |              |
+                                                          |              |
+                                                          |              |
+                                                          |  Chodba A    | +-------------+
+                                              +---------+ |              | |             |
+                       +---------------+      |         | |              |>|    WC       |
+                       |               |      |   RA6   +<+              | |             |
+                       |    MHD        |      |         | |              | +-------------+
+                       |               |      +---------+ +X-----^-------+
+                       +---------------+                 XXX     |
+                               ^                       XXX       |
+                               |                      XX         |
+                        +---------------+    +--------X-+        |
+   +-------------+      |               |--->|  Jedalen |        |
+   |             |      |   Parkovisko  |    -----------+        |
+   |  Domov      +<-----+               |                +---------------+  +-------------+
+   |             |      |               +---------------->               |  |             |
+   +-------------+      +---------------+                |    Vratnica   +->+    IC       |
+                                                         |               |  |             |
+                                                         +---------------+  +-------------+
+                                                                 |
+                                                           +-----v-----+
+                                                           |           |
+                                                           |           |
+                                                           |           |
+                                                           |  Chodba B |
+                                                           |           |
+                                                           |           |
+                                                           +-----------+
