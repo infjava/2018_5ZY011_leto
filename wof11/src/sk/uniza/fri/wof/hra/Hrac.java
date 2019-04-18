@@ -152,6 +152,8 @@ public class Hrac {
         String nazovMiestnosti = citac.readUTF();
         this.aktualnaMiestnost = Mapa.getInstancia().getMiestnost(nazovMiestnosti);
         
+        this.inventar.clear();
+        
         if (verzia >= 1) {
             final int pocetPredmetov = citac.readInt();
 
