@@ -1,6 +1,9 @@
 package sk.uniza.fri.wof.svet;
 
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.svet.predmety.IPredmet;
 import java.util.HashMap;
 import java.util.Set;
@@ -131,5 +134,36 @@ public class Miestnost {
         Miestnost[] ret = new Miestnost[this.vychody.size()];
         this.vychody.values().toArray(ret);
         return ret;
+    }
+
+    void ulozSave(DataOutputStream zapisovac) throws IOException {
+        zapisovac.writeInt(this.predmety.size());
+        for (IPredmet predmet : this.predmety.values()) {
+            zapisovac.writeUTF(predmet.getTyp());
+            predmet.ulozSave(zapisovac);
+        }
+    }
+
+    void nacitajSave(DataInputStream citac, int verzia) throws IOException {
+        this.predmety.clear();
+
+        final int pocetPredmetov = citac.readInt();
+
+        for (int i = 0; i < pocetPredmetov; i++) {
+            String typPredmetu = citac.readUTF();
+            IPredmet predmet = Mapa.getInstancia().vytvorPredmet(typPredmetu);
+
+            predmet.nacitajSave(citac, verzia);
+
+            this.predmety.put(predmet.getNazov(), predmet);
+        }
+    }
+
+    boolean getTrebaUlozit() {
+        if (this.predmety.size() > 0) {
+            return true;
+        }
+        
+        return false;
     }
 }

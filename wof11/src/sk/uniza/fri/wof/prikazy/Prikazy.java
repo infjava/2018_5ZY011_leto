@@ -14,6 +14,7 @@ import sk.uniza.fri.wof.hra.exceptions.NedaSaVstupitException;
 import sk.uniza.fri.wof.hra.exceptions.NemanipulovatelnyPredmetException;
 import sk.uniza.fri.wof.hra.exceptions.NenasielSaPredmetException;
 import sk.uniza.fri.wof.hra.exceptions.NenasielSaVychodException;
+import sk.uniza.fri.wof.svet.Mapa;
 import sk.uniza.fri.wof.svet.Miestnost;
 
 /**
@@ -28,7 +29,7 @@ import sk.uniza.fri.wof.svet.Miestnost;
 public class Prikazy {
     
     private static final int SAVE_MAGIC_NUMBER = 468763546;
-    private static final int SAVE_VERSION = 2;
+    private static final int SAVE_VERSION = 3;
 
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
@@ -267,6 +268,7 @@ public class Prikazy {
             zapisovac.writeInt(Prikazy.SAVE_MAGIC_NUMBER);
             zapisovac.writeInt(Prikazy.SAVE_VERSION);
             hrac.ulozSave(zapisovac);
+            Mapa.getInstancia().ulozSave(zapisovac);
         } catch (IOException ex) {
             System.out.println("Nastala divna chyba, kontaktuj programatora.");
             System.out.println(ex.getMessage());
@@ -290,6 +292,7 @@ public class Prikazy {
             }
             
             hrac.nacitajSave(citac, verzia);
+            Mapa.getInstancia().nacitajSave(citac, verzia);
             
             hrac.getAktualnaMiestnost().infoOMiestnosti();
         } catch (FileNotFoundException ex) {

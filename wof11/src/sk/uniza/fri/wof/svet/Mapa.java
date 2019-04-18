@@ -1,5 +1,8 @@
 package sk.uniza.fri.wof.svet;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.svet.npc.Vratnicka;
 import sk.uniza.fri.wof.svet.predmety.Navleky;
 import sk.uniza.fri.wof.svet.predmety.VseobecnyPredmet;
@@ -194,6 +197,40 @@ public class Mapa {
                 return new VseobecnyPredmet(null);
             default:
                 throw new AssertionError();
+        }
+    }
+
+    public void ulozSave(DataOutputStream zapisovac) throws IOException {
+        int pocet = 0;
+        for (Miestnost miestnost : this.zoznamMiestnosti) {
+            if (miestnost.getTrebaUlozit()) {
+                pocet++;
+            }
+        }
+        zapisovac.writeInt(pocet);
+        for (Miestnost miestnost : this.zoznamMiestnosti) {
+            if (miestnost.getTrebaUlozit()) {
+                zapisovac.writeUTF(miestnost.getNazov());
+                miestnost.ulozSave(zapisovac);
+            }
+        }
+    }
+
+    public void nacitajSave(DataInputStream citac, int verzia) throws IOException {
+        if (verzia >= 3) {
+            int pocetMiestnosti = citac.readInt();
+
+            for (int i = 0; i < pocetMiestnosti; i++) {
+                String nazovMiestnosti = citac.readUTF();
+                Miestnost miestnost = this.getMiestnost(nazovMiestnosti);
+
+                // ak uz dana miestnost neexistuje
+                if (miestnost == null) {
+                    miestnost = new Miestnost(nazovMiestnosti, null);
+                }
+
+                miestnost.nacitajSave(citac, verzia);
+            }
         }
     }
 }
