@@ -28,7 +28,7 @@ import sk.uniza.fri.wof.svet.Miestnost;
 public class Prikazy {
     
     private static final int SAVE_MAGIC_NUMBER = 468763546;
-    private static final int SAVE_VERSION = 1;
+    private static final int SAVE_VERSION = 2;
 
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {

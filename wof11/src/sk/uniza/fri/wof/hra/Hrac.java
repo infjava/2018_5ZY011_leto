@@ -144,6 +144,7 @@ public class Hrac {
         zapisovac.writeInt(this.inventar.size());
         for (IPredmet predmet : this.inventar.values()) {
             zapisovac.writeUTF(predmet.getTyp());
+            predmet.ulozSave(zapisovac);
         }
     }
 
@@ -157,6 +158,10 @@ public class Hrac {
             for (int i = 0; i < pocetPredmetov; i++) {
                 String typPredmetu = citac.readUTF();
                 IPredmet predmet = Mapa.getInstancia().vytvorPredmet(typPredmetu);
+                
+                if (verzia >= 2) {
+                    predmet.nacitajSave(citac, verzia);
+                }
                 
                 this.inventar.put(predmet.getNazov(), predmet);
             }

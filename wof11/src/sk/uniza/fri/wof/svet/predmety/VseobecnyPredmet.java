@@ -5,6 +5,9 @@
  */
 package sk.uniza.fri.wof.svet.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hra.Hrac;
 
 /**
@@ -12,7 +15,7 @@ import sk.uniza.fri.wof.hra.Hrac;
  * @author janik
  */
 public class VseobecnyPredmet implements IPredmet {
-    private final String nazov;
+    private String nazov;
 
     public VseobecnyPredmet(String nazov) {
         this.nazov = nazov;
@@ -36,5 +39,15 @@ public class VseobecnyPredmet implements IPredmet {
     @Override
     public String getTyp() {
         return "VseobecnyPredmet";
+    }
+
+    @Override
+    public void ulozSave(DataOutputStream zapisovac) throws IOException {
+        zapisovac.writeUTF(this.nazov);
+    }
+
+    @Override
+    public void nacitajSave(DataInputStream citac, int verzia) throws IOException {
+        this.nazov = citac.readUTF();
     }
 }

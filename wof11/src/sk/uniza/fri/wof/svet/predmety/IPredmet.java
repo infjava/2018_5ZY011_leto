@@ -5,6 +5,9 @@
  */
 package sk.uniza.fri.wof.svet.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hra.Hrac;
 
 /**
@@ -20,5 +23,9 @@ public interface IPredmet {
     boolean jeManipulovatelny();
 
     String getTyp();
+
+    void ulozSave(DataOutputStream zapisovac) throws IOException;
+
+    void nacitajSave(DataInputStream citac, int verzia) throws IOException;
     
 }

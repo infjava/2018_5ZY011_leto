@@ -5,6 +5,9 @@
  */
 package sk.uniza.fri.wof.svet.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hra.Hrac;
 
 /**
@@ -55,5 +58,17 @@ public class Navleky implements IPredmet {
     @Override
     public String getTyp() {
         return "Navleky";
+    }
+
+    @Override
+    public void ulozSave(DataOutputStream zapisovac) throws IOException {
+        zapisovac.writeBoolean(this.suObute);
+        zapisovac.writeInt(this.pocetObuti);
+    }
+
+    @Override
+    public void nacitajSave(DataInputStream citac, int verzia) throws IOException {
+        this.suObute = citac.readBoolean();
+        this.pocetObuti = citac.readInt();
     }
 }
