@@ -32,4 +32,9 @@ public class VseobecnyPredmet implements IPredmet {
     public boolean jeManipulovatelny() {
         return true;
     }
+
+    @Override
+    public String getTyp() {
+        return "VseobecnyPredmet";
+    }
 }

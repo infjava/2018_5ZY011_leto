@@ -18,5 +18,7 @@ public interface IPredmet {
     void pouziSa(Hrac hrac);
     
     boolean jeManipulovatelny();
+
+    String getTyp();
     
 }

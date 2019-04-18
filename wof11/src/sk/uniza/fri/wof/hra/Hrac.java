@@ -140,10 +140,26 @@ public class Hrac {
 
     public void ulozSave(DataOutputStream zapisovac) throws IOException {
         zapisovac.writeUTF(this.aktualnaMiestnost.getNazov());
+        
+        zapisovac.writeInt(this.inventar.size());
+        for (IPredmet predmet : this.inventar.values()) {
+            zapisovac.writeUTF(predmet.getTyp());
+        }
     }
 
     public void nacitajSave(DataInputStream citac, int verzia) throws IOException {
         String nazovMiestnosti = citac.readUTF();
         this.aktualnaMiestnost = Mapa.getInstancia().getMiestnost(nazovMiestnosti);
+        
+        if (verzia >= 1) {
+            final int pocetPredmetov = citac.readInt();
+
+            for (int i = 0; i < pocetPredmetov; i++) {
+                String typPredmetu = citac.readUTF();
+                IPredmet predmet = Mapa.getInstancia().vytvorPredmet(typPredmetu);
+                
+                this.inventar.put(predmet.getNazov(), predmet);
+            }
+        }
     }
 }

@@ -51,4 +51,9 @@ public class Navleky implements IPredmet {
     public boolean getObute() {
         return this.suObute;
     }
+
+    @Override
+    public String getTyp() {
+        return "Navleky";
+    }
 }

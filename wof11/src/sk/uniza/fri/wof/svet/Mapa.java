@@ -5,6 +5,7 @@ import sk.uniza.fri.wof.svet.predmety.Navleky;
 import sk.uniza.fri.wof.svet.predmety.VseobecnyPredmet;
 import sk.uniza.fri.wof.svet.npc.Upratovacka;
 import java.util.ArrayList;
+import sk.uniza.fri.wof.svet.predmety.IPredmet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -183,5 +184,16 @@ public class Mapa {
         }
         
         return null;
+    }
+
+    public IPredmet vytvorPredmet(String typPredmetu) {
+        switch (typPredmetu) {
+            case "Navleky":
+                return new Navleky();
+            case "VseobecnyPredmet":
+                return new VseobecnyPredmet(null);
+            default:
+                throw new AssertionError();
+        }
     }
 }
