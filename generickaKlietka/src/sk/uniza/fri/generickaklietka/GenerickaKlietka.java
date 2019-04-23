@@ -18,6 +18,9 @@ public class GenerickaKlietka {
         // TODO code application logic here
         Klietka<Lev> klietkaNaLeva = new Klietka<Lev>();
         klietkaNaLeva.vloz(new Lev());
+        klietkaNaLeva.nakrm(new Maso());
+        // leva nemozem krmit syrom
+        // klietkaNaLeva.nakrm(new Syr());
         // tu by nastala chyba
         // klietkaNaLeva.vloz(new Lev());
         System.out.println(klietkaNaLeva);

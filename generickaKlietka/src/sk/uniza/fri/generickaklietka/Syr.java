@@ -9,7 +9,7 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-public class Syr extends Potrava {
+public class Syr extends Potrava<Mys> {
 
     public Syr() {
     }
