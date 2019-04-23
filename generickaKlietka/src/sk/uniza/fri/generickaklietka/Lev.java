@@ -20,7 +20,7 @@ public class Lev extends Zviera {
     }
 
     @Override
-    void zjedz(Potrava potrava) {
+    void zjedz(IPotrava potrava) {
         System.out.println("Lev zjedol " + potrava);
     }
 }

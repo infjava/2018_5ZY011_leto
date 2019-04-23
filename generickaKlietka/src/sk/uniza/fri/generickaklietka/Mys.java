@@ -9,7 +9,7 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-public class Mys extends Zviera {
+public class Mys extends Zviera implements IPotrava<Lev> {
 
     public Mys() {
     }
@@ -20,7 +20,7 @@ public class Mys extends Zviera {
     }
 
     @Override
-    void zjedz(Potrava potrava) {
+    void zjedz(IPotrava potrava) {
         System.out.println("Mys zjedla " + potrava);
     }
 }

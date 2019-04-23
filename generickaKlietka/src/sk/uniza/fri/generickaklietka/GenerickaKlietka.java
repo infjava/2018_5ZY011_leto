@@ -19,6 +19,7 @@ public class GenerickaKlietka {
         Klietka<Lev> klietkaNaLeva = new Klietka<Lev>();
         klietkaNaLeva.vloz(new Lev());
         klietkaNaLeva.nakrm(new Maso());
+        klietkaNaLeva.nakrm(new Mys());
         // leva nemozem krmit syrom
         // klietkaNaLeva.nakrm(new Syr());
         // tu by nastala chyba

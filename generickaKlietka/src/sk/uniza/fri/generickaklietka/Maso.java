@@ -6,7 +6,7 @@
 package sk.uniza.fri.generickaklietka;
 
 
-public class Maso extends Potrava<Lev> {
+public class Maso implements IPotrava<Lev> {
 
     @Override
     public String toString() {

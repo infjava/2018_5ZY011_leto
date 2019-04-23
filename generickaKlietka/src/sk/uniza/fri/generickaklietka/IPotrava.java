@@ -10,6 +10,6 @@ package sk.uniza.fri.generickaklietka;
  * @author janik
  * @param T je zviera pre ktore je potrava urcena
  */
-abstract class Potrava<T> {
+interface IPotrava<T> {
     
 }
