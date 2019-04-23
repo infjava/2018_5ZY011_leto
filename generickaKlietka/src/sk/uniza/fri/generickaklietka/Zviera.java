@@ -9,14 +9,6 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-public class Mys extends Zviera {
-
-    public Mys() {
-    }
-
-    @Override
-    public String toString() {
-        return "Mys{" + '}';
-    }
+class Zviera {
     
 }

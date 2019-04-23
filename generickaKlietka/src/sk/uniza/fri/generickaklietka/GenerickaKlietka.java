@@ -27,5 +27,8 @@ public class GenerickaKlietka {
         // do klietky na mys sa neda vlozit lev
         // klietkaNaMys.vloz(new Lev());
         System.out.println(klietkaNaMys);
+        
+        // klietka nemoze obsahovat insie ako zvierata
+        // Klietka<Integer> klietkaNaCeleCisla = new Klietka<Integer>();
     }
 }

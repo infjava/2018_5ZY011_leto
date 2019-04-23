@@ -9,7 +9,7 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-class Klietka<T> {
+class Klietka<T extends Zviera> {
 
     private T zviera;
 

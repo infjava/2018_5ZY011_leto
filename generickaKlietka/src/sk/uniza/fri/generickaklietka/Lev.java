@@ -9,7 +9,7 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-public class Lev {
+public class Lev extends Zviera {
 
     public Lev() {
     }
