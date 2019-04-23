@@ -9,6 +9,14 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-abstract class Zviera {
-    abstract void zjedz(Potrava potrava);
+public class Syr extends Potrava {
+
+    public Syr() {
+    }
+
+    @Override
+    public String toString() {
+        return "Syr{" + '}';
+    }
+    
 }

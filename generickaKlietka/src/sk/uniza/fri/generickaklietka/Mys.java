@@ -18,5 +18,9 @@ public class Mys extends Zviera {
     public String toString() {
         return "Mys{" + '}';
     }
-    
+
+    @Override
+    void zjedz(Potrava potrava) {
+        System.out.println("Mys zjedla " + potrava);
+    }
 }

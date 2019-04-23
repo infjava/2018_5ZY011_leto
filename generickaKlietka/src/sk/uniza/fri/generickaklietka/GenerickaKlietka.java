@@ -24,6 +24,7 @@ public class GenerickaKlietka {
         
         Klietka<Mys> klietkaNaMys = new Klietka<Mys>();
         klietkaNaMys.vloz(new Mys());
+        klietkaNaMys.nakrm(new Syr());
         // do klietky na mys sa neda vlozit lev
         // klietkaNaMys.vloz(new Lev());
         System.out.println(klietkaNaMys);

@@ -9,6 +9,10 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-abstract class Zviera {
-    abstract void zjedz(Potrava potrava);
+public class KlietkaJePrazdnaException extends RuntimeException {
+
+    public KlietkaJePrazdnaException(String message) {
+        super(message);
+    }
+    
 }

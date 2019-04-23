@@ -9,6 +9,6 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-abstract class Zviera {
-    abstract void zjedz(Potrava potrava);
+abstract class Potrava {
+    
 }

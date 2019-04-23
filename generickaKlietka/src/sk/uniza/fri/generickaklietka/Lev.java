@@ -18,5 +18,9 @@ public class Lev extends Zviera {
     public String toString() {
         return "Lev{" + '}';
     }
-    
+
+    @Override
+    void zjedz(Potrava potrava) {
+        System.out.println("Lev zjedol " + potrava);
+    }
 }

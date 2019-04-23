@@ -24,6 +24,14 @@ class Klietka<T extends Zviera> {
         
         this.zviera = zviera;
     }
+    
+    void nakrm(Potrava potrava) {
+        if (this.zviera == null) {
+            throw new KlietkaJePrazdnaException("Nemozem nakrmit null");
+        }
+        
+        this.zviera.zjedz(potrava);
+    }
 
     @Override
     public String toString() {
