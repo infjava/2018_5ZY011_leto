@@ -16,14 +16,16 @@ public class GenerickaKlietka {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Klietka klietkaNaLeva = new Klietka();
+        Klietka<Lev> klietkaNaLeva = new Klietka<Lev>();
         klietkaNaLeva.vloz(new Lev());
         // tu by nastala chyba
         // klietkaNaLeva.vloz(new Lev());
         System.out.println(klietkaNaLeva);
         
-        Klietka klietkaNaMys = new Klietka();
+        Klietka<Mys> klietkaNaMys = new Klietka<Mys>();
         klietkaNaMys.vloz(new Mys());
+        // do klietky na mys sa neda vlozit lev
+        // klietkaNaMys.vloz(new Lev());
         System.out.println(klietkaNaMys);
     }
 }

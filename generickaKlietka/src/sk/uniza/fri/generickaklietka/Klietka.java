@@ -9,15 +9,15 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-class Klietka {
+class Klietka<T> {
 
-    private Object zviera;
+    private T zviera;
 
     Klietka() {
         this.zviera = null;
     }
 
-    void vloz(Object zviera) {
+    void vloz(T zviera) {
         if (this.zviera != null) {
             throw new KlietkaNieJePrazdnaException("Uz tam mas " + this.zviera);
         }
