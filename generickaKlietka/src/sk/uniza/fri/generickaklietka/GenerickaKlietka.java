@@ -40,5 +40,10 @@ public class GenerickaKlietka {
         
         // klietka nemoze obsahovat insie ako zvierata
         // Klietka<Integer> klietkaNaCeleCisla = new Klietka<Integer>();
+        
+        Lev lev = new Lev();
+        lev.zjedz(new Mys());
+        // lev isto nezje syr
+        // lev.zjedz(new Syr());
     }
 }

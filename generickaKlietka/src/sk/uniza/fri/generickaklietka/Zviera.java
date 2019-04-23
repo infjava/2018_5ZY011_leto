@@ -8,7 +8,8 @@ package sk.uniza.fri.generickaklietka;
 /**
  *
  * @author janik
+ * @param T typ zvierata
  */
-abstract class Zviera {
-    abstract void zjedz(IPotrava potrava);
+abstract class Zviera<T> {
+    abstract void zjedz(IPotrava<T> potrava);
 }
