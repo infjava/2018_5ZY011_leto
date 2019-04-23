@@ -9,20 +9,14 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-class Klietka {
+public class Mys {
 
-    private Object zviera;
-
-    Klietka() {
-        this.zviera = null;
-    }
-
-    void vloz(Object zviera) {
-        this.zviera = zviera;
+    public Mys() {
     }
 
     @Override
     public String toString() {
-        return "Klietka{" + "zviera=" + this.zviera + '}';
+        return "Mys{" + '}';
     }
+    
 }
