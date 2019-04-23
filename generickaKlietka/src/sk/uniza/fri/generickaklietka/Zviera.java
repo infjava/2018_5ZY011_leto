@@ -9,6 +9,6 @@ package sk.uniza.fri.generickaklietka;
  *
  * @author janik
  */
-class Zviera {
+abstract class Zviera {
     
 }

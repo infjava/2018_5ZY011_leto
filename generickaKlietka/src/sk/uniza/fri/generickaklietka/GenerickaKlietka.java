@@ -28,6 +28,11 @@ public class GenerickaKlietka {
         // klietkaNaMys.vloz(new Lev());
         System.out.println(klietkaNaMys);
         
+        Klietka<Zviera> klietkaNaZviera = new Klietka<Zviera>();
+        klietkaNaZviera.vloz(new Mys());
+        //klietkaNaZviera.vloz(new Zviera());
+        System.out.println(klietkaNaZviera);
+        
         // klietka nemoze obsahovat insie ako zvierata
         // Klietka<Integer> klietkaNaCeleCisla = new Klietka<Integer>();
     }
