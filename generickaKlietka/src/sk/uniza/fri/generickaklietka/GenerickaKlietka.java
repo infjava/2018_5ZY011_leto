@@ -18,6 +18,8 @@ public class GenerickaKlietka {
         // TODO code application logic here
         Klietka klietkaNaLeva = new Klietka();
         klietkaNaLeva.vloz(new Lev());
+        // tu by nastala chyba
+        // klietkaNaLeva.vloz(new Lev());
         System.out.println(klietkaNaLeva);
         
         Klietka klietkaNaMys = new Klietka();

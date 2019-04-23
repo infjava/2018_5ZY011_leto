@@ -18,6 +18,10 @@ class Klietka {
     }
 
     void vloz(Object zviera) {
+        if (this.zviera != null) {
+            throw new KlietkaNieJePrazdnaException("Uz tam mas " + this.zviera);
+        }
+        
         this.zviera = zviera;
     }
 
