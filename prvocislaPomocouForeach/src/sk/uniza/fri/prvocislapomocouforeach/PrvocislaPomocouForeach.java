@@ -15,7 +15,9 @@ public class PrvocislaPomocouForeach {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        for (Integer cislo : new Prvocisla(100, 200)) {
+            System.out.println("Toto je tiez prvocislo: " + cislo);
+        }
     }
     
 }
