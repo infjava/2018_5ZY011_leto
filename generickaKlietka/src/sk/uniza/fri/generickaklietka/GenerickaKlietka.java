@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.generickaklietka;
 
+import java.util.Iterator;
+
 /**
  *
  * @author janik
@@ -45,5 +47,26 @@ public class GenerickaKlietka {
         lev.zjedz(new Mys());
         // lev isto nezje syr
         // lev.zjedz(new Syr());
+        
+        System.out.println("Plna klietka:");
+        for (Lev l : klietkaNaLeva) {
+            System.out.println(l);
+            System.out.println("Som tu");
+        }
+        
+        System.out.println("Prazdna klietka:");
+        for (Lev l : new Klietka<Lev>()) {
+            System.out.println(l);
+            System.out.println("Som tu");
+        }
+        
+        /*
+        // Alternativa cez while:
+        Iterator<Lev> prst = klietkaNaLeva.iterator();
+        while (prst.hasNext()) {
+            Lev l = prst.next();
+            System.out.println(l);
+        }
+        */
     }
 }

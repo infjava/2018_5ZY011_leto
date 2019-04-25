@@ -5,11 +5,13 @@
  */
 package sk.uniza.fri.generickaklietka;
 
+import java.util.Iterator;
+
 /**
  *
  * @author janik
  */
-class Klietka<T extends Zviera> {
+class Klietka<T extends Zviera> implements Iterable<T> {
 
     private T zviera;
 
@@ -36,5 +38,10 @@ class Klietka<T extends Zviera> {
     @Override
     public String toString() {
         return "Klietka{" + "zviera=" + this.zviera + '}';
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new KlietkaIterator<T>(this.zviera);
     }
 }
