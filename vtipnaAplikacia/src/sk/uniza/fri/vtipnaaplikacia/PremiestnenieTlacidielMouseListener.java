@@ -7,6 +7,7 @@ package sk.uniza.fri.vtipnaaplikacia;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 /**
  *
@@ -14,11 +15,18 @@ import java.awt.event.MouseEvent;
  */
 public class PremiestnenieTlacidielMouseListener extends MouseAdapter {
 
-    public PremiestnenieTlacidielMouseListener() {
+    private final JButton tlacidloA;
+    private final JButton tlacidloFx;
+
+    PremiestnenieTlacidielMouseListener(JButton tlacidloA, JButton tlacidloFx) {
+        this.tlacidloA = tlacidloA;
+        this.tlacidloFx = tlacidloFx;
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        System.out.println("Presiel si ponad komponent");
+        this.tlacidloA.setText("FX");
+        this.tlacidloFx.setText("A");
     }
 }
