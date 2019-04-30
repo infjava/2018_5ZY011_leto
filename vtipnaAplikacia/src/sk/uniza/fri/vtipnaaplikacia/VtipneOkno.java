@@ -30,7 +30,9 @@ public class VtipneOkno {
         this.okno.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                VtipneOkno.this.okno.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Tak lahko sa z toho nevyvlecies.");
+                VtipneOkno.this.okno.setVisible(true);
             }
         });
         
