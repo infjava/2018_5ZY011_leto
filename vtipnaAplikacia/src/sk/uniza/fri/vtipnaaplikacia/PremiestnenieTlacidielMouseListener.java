@@ -28,5 +28,7 @@ public class PremiestnenieTlacidielMouseListener extends MouseAdapter {
     public void mouseEntered(MouseEvent e) {
         this.tlacidloA.setText("FX");
         this.tlacidloFx.setText("A");
+        this.tlacidloFx.setFocusable(true);
+        this.tlacidloA.setFocusable(false);
     }
 }

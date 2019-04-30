@@ -43,6 +43,7 @@ public class VtipneOkno {
         tlacidla.setLayout(new GridLayout(1, 2));
         final JButton tlacidloA = new JButton("A");
         final JButton tlacidloFx = new JButton("FX");
+        tlacidloFx.setFocusable(false);
         
         tlacidloA.addMouseListener(new PremiestnenieTlacidielMouseListener(tlacidloFx, tlacidloA));
         tlacidloFx.addMouseListener(new PremiestnenieTlacidielMouseListener(tlacidloA, tlacidloFx));
