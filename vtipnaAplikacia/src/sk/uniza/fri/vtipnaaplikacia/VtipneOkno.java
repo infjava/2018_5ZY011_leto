@@ -34,6 +34,9 @@ public class VtipneOkno {
         tlacidloA.addMouseListener(new PremiestnenieTlacidielMouseListener(tlacidloFx, tlacidloA));
         tlacidloFx.addMouseListener(new PremiestnenieTlacidielMouseListener(tlacidloA, tlacidloFx));
         
+        tlacidloA.addActionListener(new ZobrazenieHlaskyActionListener());
+        tlacidloFx.addActionListener(new ZobrazenieHlaskyActionListener());
+        
         tlacidla.add(tlacidloA);
         tlacidla.add(tlacidloFx);
         
