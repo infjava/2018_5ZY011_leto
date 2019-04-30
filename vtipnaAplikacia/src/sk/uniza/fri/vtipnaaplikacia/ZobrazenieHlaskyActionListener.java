@@ -18,6 +18,7 @@ public class ZobrazenieHlaskyActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Tak sa treba snazit!");
+        System.exit(0);
     }
     
 }
