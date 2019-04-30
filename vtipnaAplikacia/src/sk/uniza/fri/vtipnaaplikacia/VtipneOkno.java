@@ -5,8 +5,12 @@
  */
 package sk.uniza.fri.vtipnaaplikacia;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,7 +23,15 @@ public class VtipneOkno {
     public VtipneOkno() {
         this.okno = new JFrame("Otazka");
         this.okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.okno.add(new JLabel("Aku znamku budes mat z Informatiky"));
+        this.okno.setLayout(new BorderLayout());
+        this.okno.add(new JLabel("Aku znamku budes mat z Informatiky"), BorderLayout.NORTH);
+        
+        JPanel tlacidla = new JPanel();
+        tlacidla.setLayout(new GridLayout(1, 2));
+        tlacidla.add(new JButton("A"));
+        tlacidla.add(new JButton("FX"));
+        this.okno.add(tlacidla, BorderLayout.CENTER);
+        
         this.okno.pack();
     }
     
