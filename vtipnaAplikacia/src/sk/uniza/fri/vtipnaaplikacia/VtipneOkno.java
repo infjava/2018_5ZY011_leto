@@ -6,6 +6,7 @@
 package sk.uniza.fri.vtipnaaplikacia;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +19,8 @@ public class VtipneOkno {
     public VtipneOkno() {
         this.okno = new JFrame("Otazka");
         this.okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.okno.add(new JLabel("Aku znamku budes mat z Informatiky"));
+        this.okno.pack();
     }
     
     public void zobraz() {
