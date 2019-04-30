@@ -7,9 +7,12 @@ package sk.uniza.fri.vtipnaaplikacia;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,7 +25,15 @@ public class VtipneOkno {
 
     public VtipneOkno() {
         this.okno = new JFrame("Otazka");
-        this.okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.okno.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+        this.okno.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                JOptionPane.showMessageDialog(null, "Tak lahko sa z toho nevyvlecies.");
+            }
+        });
+        
         this.okno.setLayout(new BorderLayout());
         this.okno.add(new JLabel("Aku znamku budes mat z Informatiky"), BorderLayout.NORTH);
         
