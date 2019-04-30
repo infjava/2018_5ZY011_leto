@@ -28,8 +28,15 @@ public class VtipneOkno {
         
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout(1, 2));
-        tlacidla.add(new JButton("A"));
-        tlacidla.add(new JButton("FX"));
+        final JButton tlacidloA = new JButton("A");
+        final JButton tlacidloFx = new JButton("FX");
+        
+        tlacidloA.addMouseListener(new PremiestnenieTlacidielMouseListener());
+        tlacidloFx.addMouseListener(new PremiestnenieTlacidielMouseListener());
+        
+        tlacidla.add(tlacidloA);
+        tlacidla.add(tlacidloFx);
+        
         this.okno.add(tlacidla, BorderLayout.CENTER);
         
         this.okno.pack();
