@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.zoznamstudentov;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author janik
@@ -27,20 +29,20 @@ public class HlavneOkno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
+        meno = new javax.swing.JTextArea();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
+        priezvisko = new javax.swing.JTextArea();
+        javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
+        tlacidloPridajStudenta = new javax.swing.JButton();
+        tlacidloOdstranStudenta = new javax.swing.JButton();
+        javax.swing.JPanel jPanel4 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+        zoznamStudentov = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zoznam študentov");
@@ -50,18 +52,18 @@ public class HlavneOkno extends javax.swing.JFrame {
         jLabel2.setText("Meno");
         jPanel2.add(jLabel2);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        meno.setColumns(20);
+        meno.setRows(5);
+        jScrollPane2.setViewportView(meno);
 
         jPanel2.add(jScrollPane2);
 
         jLabel3.setText("Priezvisko");
         jPanel2.add(jLabel3);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        priezvisko.setColumns(20);
+        priezvisko.setRows(5);
+        jScrollPane3.setViewportView(priezvisko);
 
         jPanel2.add(jScrollPane3);
 
@@ -69,11 +71,16 @@ public class HlavneOkno extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout());
 
-        jButton1.setText("pridať študenta");
-        jPanel3.add(jButton1);
+        tlacidloPridajStudenta.setText("pridať študenta");
+        tlacidloPridajStudenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatStudenta(evt);
+            }
+        });
+        jPanel3.add(tlacidloPridajStudenta);
 
-        jButton2.setText("odstrániť študenta");
-        jPanel3.add(jButton2);
+        tlacidloOdstranStudenta.setText("odstrániť študenta");
+        jPanel3.add(tlacidloOdstranStudenta);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
@@ -82,7 +89,7 @@ public class HlavneOkno extends javax.swing.JFrame {
         jLabel1.setText("Zoznam študentov");
         jPanel4.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(zoznamStudentov);
 
         jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -91,20 +98,15 @@ public class HlavneOkno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pridatStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatStudenta
+        JOptionPane.showMessageDialog(null, "Som tu");
+    }//GEN-LAST:event_pridatStudenta
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea meno;
+    private javax.swing.JTextArea priezvisko;
+    private javax.swing.JButton tlacidloOdstranStudenta;
+    private javax.swing.JButton tlacidloPridajStudenta;
+    private javax.swing.JList<String> zoznamStudentov;
     // End of variables declaration//GEN-END:variables
 }
