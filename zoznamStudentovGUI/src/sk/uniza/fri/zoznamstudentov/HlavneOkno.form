@@ -122,6 +122,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="odstr&#xe1;ni&#x165; &#x161;tudenta"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="odstranitStudenta"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

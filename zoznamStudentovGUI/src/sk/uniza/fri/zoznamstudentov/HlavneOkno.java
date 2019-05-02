@@ -6,6 +6,7 @@
 package sk.uniza.fri.zoznamstudentov;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +84,11 @@ public class HlavneOkno extends javax.swing.JFrame {
         jPanel3.add(tlacidloPridajStudenta);
 
         tlacidloOdstranStudenta.setText("odstrániť študenta");
+        tlacidloOdstranStudenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odstranitStudenta(evt);
+            }
+        });
         jPanel3.add(tlacidloOdstranStudenta);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -106,6 +112,17 @@ public class HlavneOkno extends javax.swing.JFrame {
         String celeMeno = this.meno.getText() + " " + this.priezvisko.getText();
         this.zoznamStudentovModel.addElement(celeMeno);
     }//GEN-LAST:event_pridatStudenta
+
+    private void odstranitStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitStudenta
+        int vybranyStudent = this.zoznamStudentov.getSelectedIndex();
+        
+        if (vybranyStudent < 0) {
+            JOptionPane.showMessageDialog(null, "Nie je vybrany ziaden student");
+            return;
+        }
+        
+        this.zoznamStudentovModel.remove(vybranyStudent);
+    }//GEN-LAST:event_odstranitStudenta
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea meno;
