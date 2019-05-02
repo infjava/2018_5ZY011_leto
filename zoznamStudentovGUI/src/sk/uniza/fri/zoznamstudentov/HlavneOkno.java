@@ -5,7 +5,7 @@
  */
 package sk.uniza.fri.zoznamstudentov;
 
-import javax.swing.JOptionPane;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -13,10 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class HlavneOkno extends javax.swing.JFrame {
 
+    private final DefaultListModel<String> zoznamStudentovModel;
+    
     /**
      * Creates new form HlavneOkno
      */
     public HlavneOkno() {
+        this.zoznamStudentovModel = new DefaultListModel<String>();
         this.initComponents();
     }
 
@@ -89,6 +92,7 @@ public class HlavneOkno extends javax.swing.JFrame {
         jLabel1.setText("Zoznam študentov");
         jPanel4.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
+        zoznamStudentov.setModel(this.zoznamStudentovModel);
         jScrollPane1.setViewportView(zoznamStudentov);
 
         jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -99,7 +103,8 @@ public class HlavneOkno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pridatStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatStudenta
-        JOptionPane.showMessageDialog(null, "Som tu");
+        String celeMeno = this.meno.getText() + " " + this.priezvisko.getText();
+        this.zoznamStudentovModel.addElement(celeMeno);
     }//GEN-LAST:event_pridatStudenta
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
