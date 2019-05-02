@@ -43,6 +43,7 @@ public class HlavneOkno extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Zoznam študentov");
 
         jPanel2.setLayout(new java.awt.GridLayout(4, 0));
 
@@ -68,10 +69,10 @@ public class HlavneOkno extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout());
 
-        jButton1.setText("jButton1");
+        jButton1.setText("pridať študenta");
         jPanel3.add(jButton1);
 
-        jButton2.setText("jButton2");
+        jButton2.setText("odstrániť študenta");
         jPanel3.add(jButton2);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -81,11 +82,6 @@ public class HlavneOkno extends javax.swing.JFrame {
         jLabel1.setText("Zoznam študentov");
         jPanel4.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
