@@ -109,8 +109,14 @@ public class HlavneOkno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pridatStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatStudenta
+        if (this.meno.getText().isEmpty() || this.priezvisko.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nie je zadane meno ci priezvisko");
+            return;
+        }
         String celeMeno = this.meno.getText() + " " + this.priezvisko.getText();
         this.zoznamStudentovModel.addElement(celeMeno);
+        this.meno.setText("");
+        this.priezvisko.setText("");
     }//GEN-LAST:event_pridatStudenta
 
     private void odstranitStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitStudenta
