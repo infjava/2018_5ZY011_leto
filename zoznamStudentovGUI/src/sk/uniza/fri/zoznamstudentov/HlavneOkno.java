@@ -43,6 +43,7 @@ public class HlavneOkno extends javax.swing.JFrame {
         javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
         tlacidloPridajStudenta = new javax.swing.JButton();
         tlacidloOdstranStudenta = new javax.swing.JButton();
+        tlacidloNajstStudenta = new javax.swing.JButton();
         javax.swing.JPanel jPanel4 = new javax.swing.JPanel();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
@@ -91,6 +92,14 @@ public class HlavneOkno extends javax.swing.JFrame {
         });
         jPanel3.add(tlacidloOdstranStudenta);
 
+        tlacidloNajstStudenta.setText("nájsť študenta");
+        tlacidloNajstStudenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                najdiStudenta(evt);
+            }
+        });
+        jPanel3.add(tlacidloNajstStudenta);
+
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
@@ -130,9 +139,28 @@ public class HlavneOkno extends javax.swing.JFrame {
         this.zoznamStudentovModel.remove(vybranyStudent);
     }//GEN-LAST:event_odstranitStudenta
 
+    private void najdiStudenta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_najdiStudenta
+        if (this.meno.getText().isEmpty() || this.priezvisko.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nie je zadane meno ci priezvisko");
+            return;
+        }
+        
+        String celeMeno = this.meno.getText() + " " + this.priezvisko.getText();
+        
+        for (int i = 0; i < this.zoznamStudentovModel.size(); i++) {
+            if (this.zoznamStudentovModel.get(i).equals(celeMeno)) {
+                this.zoznamStudentov.setSelectedIndex(i);
+                return;
+            }
+        }
+        
+        this.zoznamStudentov.clearSelection();
+    }//GEN-LAST:event_najdiStudenta
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea meno;
     private javax.swing.JTextArea priezvisko;
+    private javax.swing.JButton tlacidloNajstStudenta;
     private javax.swing.JButton tlacidloOdstranStudenta;
     private javax.swing.JButton tlacidloPridajStudenta;
     private javax.swing.JList<String> zoznamStudentov;
